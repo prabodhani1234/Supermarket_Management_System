@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Test;
 
-/**
- *
- * @author User
- */
-public class ManageCashier extends javax.swing.JFrame {
+import java.sql.Connection;
+import java.sql.Statement;
 
-    /**
-     * Creates new form ManageCashier
-     */
+
+public class ManageCashier extends javax.swing.JFrame {
+    Connection con=null;
+    Statement stmt=null;
+    
     public ManageCashier() {
         initComponents();
+        con=DatabaseConnecting.conection();
     }
 
     /**
@@ -102,6 +98,11 @@ public class ManageCashier extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(102, 0, 102));
         jButton4.setText("ADD");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(102, 0, 102));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -277,6 +278,10 @@ public class ManageCashier extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
