@@ -2,7 +2,9 @@
 package Test;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 public class ManageCashier extends javax.swing.JFrame {
@@ -27,19 +29,19 @@ public class ManageCashier extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idbox = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        namebox = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        passwordbox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        emailbox = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        phonebox = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        agebox = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        gendercbox = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -62,37 +64,37 @@ public class ManageCashier extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("ID Number");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        idbox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Name");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        namebox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Password");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        passwordbox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Email");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        emailbox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Phone");
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        phonebox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Age");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        agebox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Gender");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gendercbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton4.setBackground(new java.awt.Color(102, 0, 102));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -160,13 +162,13 @@ public class ManageCashier extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jComboBox1, 0, 189, Short.MAX_VALUE))))
+                            .addComponent(idbox)
+                            .addComponent(namebox)
+                            .addComponent(passwordbox)
+                            .addComponent(emailbox)
+                            .addComponent(phonebox)
+                            .addComponent(agebox)
+                            .addComponent(gendercbox, 0, 189, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -183,7 +185,7 @@ public class ManageCashier extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idbox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,27 +194,27 @@ public class ManageCashier extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(namebox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(passwordbox, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(emailbox, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(phonebox, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(agebox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(gendercbox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -280,7 +282,37 @@ public class ManageCashier extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        try {
+            stmt=con.createStatement();
+            
+            int id=Integer.parseInt(idbox.getText());
+            String name=namebox.getText();
+            String password=passwordbox.getText();
+            String email=emailbox.getText();
+            int phone=Integer.parseInt(phonebox.getText());
+            int age=Integer.parseInt(agebox.getText());
+            String gender=(String) gendercbox.getSelectedItem();
+            
+            
+            String query="INSERT INTO cashier(Id,username,password,email,phone,age,gender) VALUES(?,?,?,?,?,?,?)";
+            
+            PreparedStatement preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setInt(1, id);
+            preparedstmt.setString(2, name);
+            preparedstmt.setString(3, password);
+            preparedstmt.setString(4, email);
+            preparedstmt.setInt(5, phone);
+            preparedstmt.setInt(6, age);
+            preparedstmt.setString(2, gender);
+            
+            preparedstmt.execute();
+            JOptionPane.showMessageDialog(null, "Add successful");
+                    
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -319,6 +351,10 @@ public class ManageCashier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField agebox;
+    private javax.swing.JTextField emailbox;
+    private javax.swing.JComboBox<String> gendercbox;
+    private javax.swing.JTextField idbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -326,7 +362,6 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -339,12 +374,9 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField namebox;
+    private javax.swing.JTextField passwordbox;
+    private javax.swing.JTextField phonebox;
     // End of variables declaration//GEN-END:variables
 }
