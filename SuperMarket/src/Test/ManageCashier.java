@@ -96,7 +96,6 @@ public class ManageCashier extends javax.swing.JFrame {
 
         gendercbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        add.setBackground(new java.awt.Color(102, 0, 102));
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setForeground(new java.awt.Color(102, 0, 102));
         add.setText("ADD");
@@ -106,12 +105,10 @@ public class ManageCashier extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(102, 0, 102));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(102, 0, 102));
         jButton5.setText("DELETE");
 
-        jButton6.setBackground(new java.awt.Color(102, 0, 102));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(102, 0, 102));
         jButton6.setText("EDIT");
@@ -129,7 +126,6 @@ public class ManageCashier extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton7.setBackground(new java.awt.Color(102, 0, 102));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(102, 0, 102));
         jButton7.setText("SEARCH");
@@ -227,14 +223,17 @@ public class ManageCashier extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(102, 0, 102));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SALES");
 
         jButton2.setBackground(new java.awt.Color(102, 0, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("PRODUCT");
 
         jButton3.setBackground(new java.awt.Color(102, 0, 102));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("CATEGORY");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
