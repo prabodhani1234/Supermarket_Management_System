@@ -124,6 +124,11 @@ public class ManageCashier extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(102, 0, 102));
         jButton6.setText("EDIT");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -317,7 +322,7 @@ public class ManageCashier extends javax.swing.JFrame {
             preparedstmt.setString(4, email);
             preparedstmt.setInt(5, phone);
             preparedstmt.setInt(6, age);
-            preparedstmt.setString(2, gender);
+            preparedstmt.setString(7, gender);
             
             preparedstmt.execute();
             JOptionPane.showMessageDialog(null, "Add successful");
@@ -341,6 +346,41 @@ public class ManageCashier extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try {
+            stmt=con.createStatement();
+            
+            //set user input data into the variable
+            int id=Integer.parseInt(idbox.getText());
+            String name=namebox.getText();
+            String password=passwordbox.getText();
+            String email=emailbox.getText();
+            int phone=Integer.parseInt(phonebox.getText());
+            int age=Integer.parseInt(agebox.getText());
+            String gender=(String) gendercbox.getSelectedItem();
+            
+            String query="UPDATE cashier SET username=?,password=?,email=?,phone=?,age=?,gender=? WHERE Id=?";
+            
+            PreparedStatement preparedstmt=con.prepareStatement(query);
+            
+            
+            preparedstmt.setString(1, name);
+            preparedstmt.setString(2, password);
+            preparedstmt.setString(3, email);
+            preparedstmt.setInt(4, phone);
+            preparedstmt.setInt(5, age);
+            preparedstmt.setString(6, gender);
+            preparedstmt.setInt(7, id);
+            
+            preparedstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update Successful");
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
