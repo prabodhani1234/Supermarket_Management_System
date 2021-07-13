@@ -49,7 +49,7 @@ public class ManageCashier extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         gendercbox = new javax.swing.JComboBox<>();
         add = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -100,7 +100,8 @@ public class ManageCashier extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Gender");
 
-        gendercbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gendercbox.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        gendercbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setForeground(new java.awt.Color(102, 0, 102));
@@ -111,9 +112,14 @@ public class ManageCashier extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(102, 0, 102));
-        jButton5.setText("DELETE");
+        delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        delete.setForeground(new java.awt.Color(102, 0, 102));
+        delete.setText("DELETE");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(102, 0, 102));
@@ -150,7 +156,7 @@ public class ManageCashier extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
+                        .addComponent(delete)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -221,7 +227,7 @@ public class ManageCashier extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(add)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -322,6 +328,20 @@ public class ManageCashier extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addActionPerformed
 
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        try {
+            stmt=con.createStatement();
+            int id=Integer.parseInt(idbox.getText());
+            String query="DELETE FROM cashier WHERE Id='"+id+"'";
+            
+            stmt.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Delete successful");
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_deleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,13 +380,13 @@ public class ManageCashier extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JTextField agebox;
+    private javax.swing.JButton delete;
     private javax.swing.JTextField emailbox;
     private javax.swing.JComboBox<String> gendercbox;
     private javax.swing.JTextField idbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
