@@ -1,12 +1,19 @@
 
 package Test;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 public class Welcome extends javax.swing.JFrame {
 
     
     public Welcome() {
         initComponents();
+        // page set center
+        Toolkit toolkit =getToolkit();
+        Dimension size =toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
