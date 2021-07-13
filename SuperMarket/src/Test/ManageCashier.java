@@ -5,13 +5,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 
 public class ManageCashier extends javax.swing.JFrame {
     Connection con=null;
     Statement stmt=null;
+    ResultSet rs=null;
+    PreparedStatement ps=null;
     
     public ManageCashier() {
         initComponents();
@@ -20,6 +24,8 @@ public class ManageCashier extends javax.swing.JFrame {
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
         
         con=DatabaseConnecting.conection();
+        
+        dataLoad();
     }
 
     /**
@@ -52,7 +58,7 @@ public class ManageCashier extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        cashiertable = new javax.swing.JTable();
         jTextField7 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -130,7 +136,7 @@ public class ManageCashier extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cashiertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -141,7 +147,7 @@ public class ManageCashier extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(cashiertable);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(102, 0, 102));
@@ -297,6 +303,19 @@ public class ManageCashier extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    public void dataLoad(){
+        try {
+            String query="SELECT Id,username,password,email,phone,age,gender FROM cashier";
+            ps=con.prepareStatement(query);
+            rs=ps.executeQuery();
+            cashiertable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             stmt=con.createStatement();
@@ -420,6 +439,7 @@ public class ManageCashier extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JTextField agebox;
+    private javax.swing.JTable cashiertable;
     private javax.swing.JButton delete;
     private javax.swing.JTextField emailbox;
     private javax.swing.JComboBox<String> gendercbox;
@@ -440,7 +460,6 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField passwordbox;
