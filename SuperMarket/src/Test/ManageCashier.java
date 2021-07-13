@@ -1,6 +1,8 @@
 
 package Test;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -13,6 +15,10 @@ public class ManageCashier extends javax.swing.JFrame {
     
     public ManageCashier() {
         initComponents();
+        Toolkit toolkit =getToolkit();
+        Dimension size =toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
         con=DatabaseConnecting.conection();
     }
 
@@ -284,6 +290,7 @@ public class ManageCashier extends javax.swing.JFrame {
         try {
             stmt=con.createStatement();
             
+            //set user input data into the variable
             int id=Integer.parseInt(idbox.getText());
             String name=namebox.getText();
             String password=passwordbox.getText();
@@ -297,6 +304,7 @@ public class ManageCashier extends javax.swing.JFrame {
             
             PreparedStatement preparedstmt=con.prepareStatement(query);
             
+            // insert user input variable data
             preparedstmt.setInt(1, id);
             preparedstmt.setString(2, name);
             preparedstmt.setString(3, password);
