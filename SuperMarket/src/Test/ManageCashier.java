@@ -56,7 +56,7 @@ public class ManageCashier extends javax.swing.JFrame {
         gendercbox = new javax.swing.JComboBox<>();
         add = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         cashiertable = new javax.swing.JTable();
         jTextField7 = new javax.swing.JTextField();
@@ -127,12 +127,12 @@ public class ManageCashier extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(102, 0, 102));
-        jButton6.setText("EDIT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        edit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        edit.setForeground(new java.awt.Color(102, 0, 102));
+        edit.setText("EDIT");
+        edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                editActionPerformed(evt);
             }
         });
 
@@ -150,11 +150,6 @@ public class ManageCashier extends javax.swing.JFrame {
         cashiertable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cashiertableMouseClicked(evt);
-            }
-        });
-        cashiertable.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cashiertableKeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(cashiertable);
@@ -179,7 +174,7 @@ public class ManageCashier extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(delete)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,7 +244,7 @@ public class ManageCashier extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(add)
                             .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -380,6 +375,7 @@ public class ManageCashier extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -394,9 +390,10 @@ public class ManageCashier extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_deleteActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         try {
             stmt=con.createStatement();
             
@@ -429,15 +426,12 @@ public class ManageCashier extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+        dataLoad();
+    }//GEN-LAST:event_editActionPerformed
 
     private void cashiertableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashiertableMouseClicked
         selectData();
     }//GEN-LAST:event_cashiertableMouseClicked
-
-    private void cashiertableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cashiertableKeyPressed
-        selectData();
-    }//GEN-LAST:event_cashiertableKeyPressed
 
     /**
      * @param args the command line arguments
@@ -479,13 +473,13 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JTextField agebox;
     private javax.swing.JTable cashiertable;
     private javax.swing.JButton delete;
+    private javax.swing.JButton edit;
     private javax.swing.JTextField emailbox;
     private javax.swing.JComboBox<String> gendercbox;
     private javax.swing.JTextField idbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
