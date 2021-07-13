@@ -116,7 +116,7 @@
                               <Component id="add" pref="98" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton5" max="32767" attributes="0"/>
+                                  <Component id="clean" max="32767" attributes="0"/>
                                   <Component id="delete" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
                                   <Component id="edit" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                              <Component id="clean" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -449,7 +449,7 @@
                 <Property name="text" type="java.lang.String" value="SEARCH"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="clean">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
@@ -459,6 +459,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="CLEAN"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
