@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Test;
 
-/**
- *
- * @author User
- */
+
 public class Welcome extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Welcome
-     */
+    
     public Welcome() {
         initComponents();
     }
@@ -124,11 +115,24 @@ public class Welcome extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Welcome().setVisible(true);
             }
-        });
+        });*/
+        Welcome load =new Welcome();
+        load.setVisible(true);
+        
+        try {
+            for(int i=0;i<100;i++){
+                Thread.sleep(50);
+                load.Progress.setValue(i);
+            }
+            load.setVisible(false);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
