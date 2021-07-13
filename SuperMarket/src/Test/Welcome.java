@@ -129,7 +129,8 @@ public class Welcome extends javax.swing.JFrame {
                 load.Progress.setValue(i);
             }
             load.setVisible(false);
-            
+            Home window=new Home();
+            window.setVisible(true);
         } catch (Exception e) {
             System.out.println(e);
         }
