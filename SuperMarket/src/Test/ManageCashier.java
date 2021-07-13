@@ -147,6 +147,16 @@ public class ManageCashier extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
+        cashiertable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cashiertableMouseClicked(evt);
+            }
+        });
+        cashiertable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cashiertableKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(cashiertable);
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -316,6 +326,26 @@ public class ManageCashier extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    
+    public void selectData(){
+        int rows=cashiertable.getSelectedRow();
+        
+        String ids = cashiertable.getValueAt(rows, 0).toString();
+        String names =cashiertable.getValueAt(rows, 1).toString();
+        String passwords=cashiertable.getValueAt(rows, 2).toString();
+        String emails=cashiertable.getValueAt(rows, 3).toString();
+        String phone=cashiertable.getValueAt(rows, 4).toString();
+        String ages=cashiertable.getValueAt(rows, 5).toString();
+        String genders =cashiertable.getValueAt(rows, 6).toString();
+        
+        idbox.setText(ids);
+        namebox.setText(names);
+        passwordbox.setText(passwords);
+        emailbox.setText(emails);
+        phonebox.setText(phone);
+        agebox.setText(ages);
+        gendercbox.setSelectedItem(genders);
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             stmt=con.createStatement();
@@ -400,6 +430,14 @@ public class ManageCashier extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void cashiertableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cashiertableMouseClicked
+        selectData();
+    }//GEN-LAST:event_cashiertableMouseClicked
+
+    private void cashiertableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cashiertableKeyPressed
+        selectData();
+    }//GEN-LAST:event_cashiertableKeyPressed
 
     /**
      * @param args the command line arguments
