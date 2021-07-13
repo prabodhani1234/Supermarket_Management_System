@@ -341,6 +341,15 @@ public class ManageCashier extends javax.swing.JFrame {
         agebox.setText(ages);
         gendercbox.setSelectedItem(genders);
     }
+    public void reset(){
+        idbox.setText("");
+        namebox.setText("");
+        passwordbox.setText("");
+        emailbox.setText("");
+        phonebox.setText("");
+        agebox.setText("");
+        
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             stmt=con.createStatement();
