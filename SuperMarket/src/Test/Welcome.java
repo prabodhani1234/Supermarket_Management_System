@@ -131,12 +131,13 @@ public class Welcome extends javax.swing.JFrame {
         load.setVisible(true);
         
         try {
+            // progerss bar loading 1 to 100
             for(int i=0;i<100;i++){
                 Thread.sleep(50);
                 load.Progress.setValue(i);
             }
-            load.setVisible(false);
-            Home window=new Home();
+            load.setVisible(false); // after the loading progress bar welcome page close
+            Home window=new Home();// home page open
             window.setVisible(true);
         } catch (Exception e) {
             System.out.println(e);
