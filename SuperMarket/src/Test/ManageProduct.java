@@ -206,6 +206,7 @@ public class ManageProduct extends javax.swing.JFrame {
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
+        producttable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         producttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
