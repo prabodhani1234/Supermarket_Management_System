@@ -336,6 +336,12 @@ public class ManageProduct extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    public void reset(){
+        idbox.setText("");
+        namebox.setText("");
+        qtybox.setText("");
+        pricebox.setText("");
+    }
     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
@@ -364,6 +370,7 @@ public class ManageProduct extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        reset();
         dataLoad();
     }//GEN-LAST:event_addActionPerformed
 
@@ -383,6 +390,7 @@ public class ManageProduct extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        reset();
         dataLoad();
     }//GEN-LAST:event_deleteActionPerformed
 
@@ -412,11 +420,12 @@ public class ManageProduct extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        reset();
         dataLoad();
     }//GEN-LAST:event_editActionPerformed
 
     private void cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanActionPerformed
-        // TODO add your handling code here:
+        reset();
     }//GEN-LAST:event_cleanActionPerformed
 
     private void producttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producttableMouseClicked
