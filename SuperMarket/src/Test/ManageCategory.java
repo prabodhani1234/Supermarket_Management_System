@@ -16,7 +16,7 @@ public class ManageCategory extends javax.swing.JFrame {
     Connection con =null;
     Statement stmt =null;
     ResultSet rs=null;
-    PreparedStatement ps=null;
+    PreparedStatement preparedstmt=null;
     
     public ManageCategory() {
         initComponents();
@@ -287,8 +287,8 @@ public class ManageCategory extends javax.swing.JFrame {
     public void dataLoad(){
         try {
             String query ="SELECT ca_id,ca_name,ca_description FROM category";
-            ps=con.prepareStatement(query);
-            rs=ps.executeQuery();
+            preparedstmt=con.prepareStatement(query);
+            rs=preparedstmt.executeQuery();
             categorytable.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
@@ -324,7 +324,7 @@ public class ManageCategory extends javax.swing.JFrame {
             
             String query ="INSERT INTO category(ca_id,ca_name,ca_description) VALUES(?,?,?)";
             
-            PreparedStatement preparedstmt=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
             preparedstmt.setInt(1, cid);
             preparedstmt.setString(2, cname);
@@ -371,7 +371,7 @@ public class ManageCategory extends javax.swing.JFrame {
             
             String query ="UPDATE category SET ca_name=?,ca_description=? WHERE ca_id=?";
             
-            PreparedStatement preparedstmt=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
             preparedstmt.setString(1, cname);
             preparedstmt.setString(2, cdesc);
