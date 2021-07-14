@@ -62,7 +62,7 @@ public class ManageCashier extends javax.swing.JFrame {
         edit = new javax.swing.JButton();
         clean = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        search = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -259,7 +259,12 @@ public class ManageCashier extends javax.swing.JFrame {
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        search.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -267,14 +272,14 @@ public class ManageCashier extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(search, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -424,6 +429,19 @@ public class ManageCashier extends javax.swing.JFrame {
         agebox.setText("");
         
     }
+    
+    public void search(){
+        String src=search.getText();
+        
+        try {
+            String query= "SELECT * FROM cashier WHERE username LIKE '%"+src+"%' OR Id LIKE '%"+src+"%' ";
+            ps=con.prepareStatement(query);
+            rs=ps.executeQuery();
+            cashiertable.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             stmt=con.createStatement();
@@ -520,6 +538,10 @@ public class ManageCashier extends javax.swing.JFrame {
         reset();
     }//GEN-LAST:event_cleanActionPerformed
 
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+        search();
+    }//GEN-LAST:event_searchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -582,9 +604,9 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField passwordbox;
     private javax.swing.JTextField phonebox;
+    private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }
