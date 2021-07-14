@@ -14,7 +14,7 @@ public class ManageProduct extends javax.swing.JFrame {
     Connection con=null;
     Statement stmt =null;
     ResultSet rs=null;
-    PreparedStatement ps =null;
+    PreparedStatement preparedstmt =null;
     
     public ManageProduct() {
         initComponents();
@@ -307,8 +307,8 @@ public class ManageProduct extends javax.swing.JFrame {
     public void dataLoad(){
         try {
             String query ="SELECT Id,Name,Quantity,Price,Category FROM product";
-            ps=con.prepareStatement(query);
-            rs=ps.executeQuery();
+            preparedstmt=con.prepareStatement(query);
+            rs=preparedstmt.executeQuery();
             producttable.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
@@ -350,7 +350,7 @@ public class ManageProduct extends javax.swing.JFrame {
             
             String query ="INSERT INTO product(Id,Name,Quantity,Price,Category) VALUES(?,?,?,?,?)";
             
-            PreparedStatement preparedstmt=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
             preparedstmt.setInt(1, pid);
             preparedstmt.setString(2, pname);
@@ -398,15 +398,15 @@ public class ManageProduct extends javax.swing.JFrame {
             
             String query ="UPDATE product SET Name=?,Quantity=?,Price=?,Category=? WHERE Id=?";
             
-            ps=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
-            ps.setString(1, pname);
-            ps.setInt(2, pqty);
-            ps.setInt(3, pprice);
-            ps.setString(4, pcategory);
-            ps.setInt(5, pid);
+            preparedstmt.setString(1, pname);
+            preparedstmt.setInt(2, pqty);
+            preparedstmt.setInt(3, pprice);
+            preparedstmt.setString(4, pcategory);
+            preparedstmt.setInt(5, pid);
             
-            ps.executeUpdate();
+            preparedstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update successful");
             
         } catch (Exception e) {
