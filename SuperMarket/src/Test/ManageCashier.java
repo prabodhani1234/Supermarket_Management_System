@@ -15,7 +15,7 @@ public class ManageCashier extends javax.swing.JFrame {
     Connection con=null;
     Statement stmt=null;
     ResultSet rs=null;
-    PreparedStatement ps=null;
+    PreparedStatement preparedstmt=null;
     
     public ManageCashier() {
         initComponents();
@@ -391,8 +391,8 @@ public class ManageCashier extends javax.swing.JFrame {
     public void dataLoad(){
         try {
             String query="SELECT Id,username,password,email,phone,age,gender FROM cashier";
-            ps=con.prepareStatement(query);
-            rs=ps.executeQuery();
+            preparedstmt=con.prepareStatement(query);
+            rs=preparedstmt.executeQuery();
             cashiertable.setModel(DbUtils.resultSetToTableModel(rs));
             
         } catch (Exception e) {
@@ -434,8 +434,8 @@ public class ManageCashier extends javax.swing.JFrame {
         
         try {
             String query= "SELECT * FROM cashier WHERE username LIKE '%"+src+"%' OR Id LIKE '%"+src+"%' ";
-            ps=con.prepareStatement(query);
-            rs=ps.executeQuery();
+            preparedstmt=con.prepareStatement(query);
+            rs=preparedstmt.executeQuery();
             cashiertable.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
             System.out.println(e);
@@ -457,7 +457,7 @@ public class ManageCashier extends javax.swing.JFrame {
             
             String query="INSERT INTO cashier(Id,username,password,email,phone,age,gender) VALUES(?,?,?,?,?,?,?)";
             
-            PreparedStatement preparedstmt=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
             // insert user input variable data
             preparedstmt.setInt(1, id);
@@ -508,7 +508,7 @@ public class ManageCashier extends javax.swing.JFrame {
             
             String query="UPDATE cashier SET username=?,password=?,email=?,phone=?,age=?,gender=? WHERE Id=?";
             
-            PreparedStatement preparedstmt=con.prepareStatement(query);
+            preparedstmt=con.prepareStatement(query);
             
             
             preparedstmt.setString(1, name);
