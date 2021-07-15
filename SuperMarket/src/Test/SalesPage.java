@@ -564,7 +564,11 @@ public class SalesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_displatbillActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        // TODO add your handling code here:
+        try {
+            billarea.print();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_printActionPerformed
 
     private void refreshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshcatActionPerformed
