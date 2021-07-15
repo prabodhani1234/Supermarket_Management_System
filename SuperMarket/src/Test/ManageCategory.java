@@ -261,7 +261,7 @@ public class ManageCategory extends javax.swing.JFrame {
     
     public void dataLoad(){
         try {
-            String query ="SELECT ca_id,ca_name,ca_disc FROM category";
+            String query ="SELECT ca_id,ca_name,ca_description FROM category";
             ps=con.prepareStatement(query);
             rs=ps.executeQuery();
             categorytable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -279,7 +279,7 @@ public class ManageCategory extends javax.swing.JFrame {
             String cname =cnamebox.getText();
             String cdisc=cdescbox.getText();
             
-            String query ="INSERT INTO category(ca_id,ca_name,ca_disc) VALUES(?,?,?)";
+            String query ="INSERT INTO category(ca_id,ca_name,ca_description) VALUES(?,?,?)";
             
             PreparedStatement preparedstmt=con.prepareStatement(query);
             
@@ -322,7 +322,7 @@ public class ManageCategory extends javax.swing.JFrame {
             String cname =cnamebox.getText();
             String cdesc=cdescbox.getText();
             
-            String query ="UPDATE category SET ca_name=?,ca_disc=? WHERE ca_id=?";
+            String query ="UPDATE category SET ca_name=?,ca_description=? WHERE ca_id=?";
             
             PreparedStatement preparedstmt=con.prepareStatement(query);
             
