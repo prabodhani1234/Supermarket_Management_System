@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 
@@ -47,10 +48,10 @@ public class SalesPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         producttable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        salestable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        totalbox = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -208,20 +209,17 @@ public class SalesPage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(producttable);
 
-        jTable2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        salestable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salestable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        salestable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Name", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(salestable);
 
         jPanel4.setBackground(new java.awt.Color(102, 0, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calculate", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -231,7 +229,7 @@ public class SalesPage extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Total");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        totalbox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,7 +262,7 @@ public class SalesPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(displatbill, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalbox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +275,7 @@ public class SalesPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(totalbox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -482,7 +480,18 @@ public class SalesPage extends javax.swing.JFrame {
     }
     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model =new DefaultTableModel();
+        model=(DefaultTableModel)salestable.getModel();
+        model.addRow(new Object[]{
+            
+            idbox.getText(),
+            namebox.getText(),
+            qtysprinne.getValue().toString(),
+            pricebox.getText(),
+            totbox.getText(),
+            
+        });
+        
     }//GEN-LAST:event_addActionPerformed
 
     private void displatbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displatbillActionPerformed
@@ -580,9 +589,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField namebox;
@@ -592,7 +599,9 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JSpinner qtysprinne;
     private javax.swing.JButton refesh;
     private javax.swing.JButton refeshcat;
+    private javax.swing.JTable salestable;
     private javax.swing.JButton search;
+    private javax.swing.JTextField totalbox;
     private javax.swing.JTextField totbox;
     // End of variables declaration//GEN-END:variables
 }
