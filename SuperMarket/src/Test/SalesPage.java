@@ -20,7 +20,7 @@ public class SalesPage extends javax.swing.JFrame {
         initComponents();
         con=DatabaseConnecting.conection();
         dataLoad();
-        setCategory();
+        
     }
 
     /**
@@ -59,9 +59,8 @@ public class SalesPage extends javax.swing.JFrame {
         balancebox = new javax.swing.JTextField();
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        categorybox = new javax.swing.JComboBox<>();
-        search = new javax.swing.JButton();
         refeshcat = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         billarea = new javax.swing.JTextArea();
         refesh = new javax.swing.JButton();
@@ -293,17 +292,6 @@ public class SalesPage extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(102, 0, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        categorybox.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        categorybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        search.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        search.setText("Search");
-        search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchActionPerformed(evt);
-            }
-        });
-
         refeshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         refeshcat.setText("Refesh");
         refeshcat.addActionListener(new java.awt.event.ActionListener() {
@@ -312,16 +300,16 @@ public class SalesPage extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(categorybox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(128, 128, 128)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addComponent(refeshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -329,9 +317,8 @@ public class SalesPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(categorybox)
-                    .addComponent(search)
-                    .addComponent(refeshcat))
+                    .addComponent(refeshcat)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -455,21 +442,6 @@ public class SalesPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setCategory(){
-        try {
-            stmt=con.createStatement();
-            String query="SELECT * FROM category";
-            rs=stmt.executeQuery(query);
-            
-            while(rs.next()){
-                String category=rs.getString("ca_name");
-                categorybox.addItem(category);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    
     public void dataLoad(){
         try {
             String query="SELECT Id,Name,Quantity,Price,Category FROM product";
@@ -494,7 +466,7 @@ public class SalesPage extends javax.swing.JFrame {
         namebox.setText(pname);
         pricebox.setText(price);
     }
-    
+   
     public void calBalance(){
         int total=Integer.parseInt(totalbox.getText());
         int pay=Integer.parseInt(paybox.getText());
@@ -577,10 +549,6 @@ public class SalesPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_printActionPerformed
 
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchActionPerformed
-
     private void refeshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshcatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_refeshcatActionPerformed
@@ -645,7 +613,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextField balancebox;
     private javax.swing.JTextArea billarea;
-    private javax.swing.JComboBox<String> categorybox;
     private javax.swing.JButton displatbill;
     private javax.swing.JTextField idbox;
     private javax.swing.JButton jButton1;
@@ -666,6 +633,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField paybox;
     private javax.swing.JTextField pricebox;
@@ -675,7 +643,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton refesh;
     private javax.swing.JButton refeshcat;
     private javax.swing.JTable salestable;
-    private javax.swing.JButton search;
     private javax.swing.JTextField totalbox;
     private javax.swing.JTextField totbox;
     // End of variables declaration//GEN-END:variables
