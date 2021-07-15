@@ -20,6 +20,7 @@ public class SalesPage extends javax.swing.JFrame {
         initComponents();
         con=DatabaseConnecting.conection();
         dataLoad();
+        printBill();
     }
 
     /**
@@ -62,7 +63,7 @@ public class SalesPage extends javax.swing.JFrame {
         search = new javax.swing.JButton();
         refeshcat = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        billarea = new javax.swing.JTextArea();
         refesh = new javax.swing.JButton();
         print = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -142,7 +143,7 @@ public class SalesPage extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pricebox)
                             .addComponent(qtysprinne, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
@@ -216,7 +217,7 @@ public class SalesPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Title 3", "Title 4", "Title 5"
+                "ID", "Name", "Quantity", "Price", "Total"
             }
         ));
         jScrollPane2.setViewportView(salestable);
@@ -322,7 +323,7 @@ public class SalesPage extends javax.swing.JFrame {
                 .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(refeshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,10 +335,10 @@ public class SalesPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        billarea.setColumns(20);
+        billarea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        billarea.setRows(5);
+        jScrollPane3.setViewportView(billarea);
 
         refesh.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         refesh.setForeground(new java.awt.Color(102, 0, 102));
@@ -368,7 +369,7 @@ public class SalesPage extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,9 +424,9 @@ public class SalesPage extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +438,7 @@ public class SalesPage extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -448,7 +449,7 @@ public class SalesPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -477,6 +478,28 @@ public class SalesPage extends javax.swing.JFrame {
         idbox.setText(pid);
         namebox.setText(pname);
         pricebox.setText(price);
+    }
+    
+    public void printBill(){
+        DefaultTableModel model =new DefaultTableModel();
+        model=(DefaultTableModel)salestable.getModel();
+        
+        billarea.setText(billarea.getText()+"\t    **SUPERMARKET**");
+        billarea.setText(billarea.getText()+"\n=====================================");
+        billarea.setText(billarea.getText()+"\n"+"Contact No - 0376897532"+"\n"+"Address    - Kurunagala");
+        billarea.setText(billarea.getText()+"\n-------------------------------------");
+        billarea.setText(billarea.getText()+"\n"+"Product"+"  "+"Qunatity"+"  "+"Price"+"     "+"Amount");
+        
+        for(int i=0;i<model.getRowCount();i++){
+            String name=(String)model.getValueAt(i, 1);
+            String qty=(String)model.getValueAt(i, 2);
+            String price=(String)model.getValueAt(i, 3);
+            String amount=(String)model.getValueAt(i, 4);
+            
+             billarea.setText(billarea.getText()+"\n"+name+"  "+qty+"  "+price+"     "+amount);
+        }
+        
+        
     }
     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -578,6 +601,7 @@ public class SalesPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JTextArea billarea;
     private javax.swing.JComboBox<String> categorybox;
     private javax.swing.JButton displatbill;
     private javax.swing.JTextField idbox;
@@ -599,7 +623,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField namebox;
