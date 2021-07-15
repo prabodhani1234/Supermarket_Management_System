@@ -20,7 +20,7 @@ public class SalesPage extends javax.swing.JFrame {
         initComponents();
         con=DatabaseConnecting.conection();
         dataLoad();
-        
+        setCategory();
     }
 
     /**
@@ -455,6 +455,21 @@ public class SalesPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setCategory(){
+        try {
+            stmt=con.createStatement();
+            String query="SELECT * FROM category";
+            rs=stmt.executeQuery(query);
+            
+            while(rs.next()){
+                String category=rs.getString("ca_name");
+                categorybox.addItem(category);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public void dataLoad(){
         try {
             String query="SELECT Id,Name,Quantity,Price,Category FROM product";
