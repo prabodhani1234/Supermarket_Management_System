@@ -138,7 +138,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_adminActionPerformed
 
     private void cachierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cachierActionPerformed
-        
+        setVisible(false);
+        cashier view =new cashier();
+        view.setVisible(true);
     }//GEN-LAST:event_cachierActionPerformed
 
     /**
