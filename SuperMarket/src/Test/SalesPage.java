@@ -109,6 +109,11 @@ public class SalesPage extends javax.swing.JFrame {
         });
 
         qtysprinne.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        qtysprinne.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                qtysprinneStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -507,6 +512,15 @@ public class SalesPage extends javax.swing.JFrame {
     private void producttableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_producttableKeyPressed
         selectData();
     }//GEN-LAST:event_producttableKeyPressed
+
+    private void qtysprinneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtysprinneStateChanged
+        int qty=Integer.parseInt(qtysprinne.getValue().toString());
+        int price=Integer.parseInt(pricebox.getText());
+        
+        int tot =qty*price;
+        
+        totbox.setText(String.valueOf(tot));
+    }//GEN-LAST:event_qtysprinneStateChanged
 
     /**
      * @param args the command line arguments
