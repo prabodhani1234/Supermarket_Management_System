@@ -172,6 +172,16 @@ public class ManageCategory extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        categorytable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                categorytableMouseClicked(evt);
+            }
+        });
+        categorytable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                categorytableKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(categorytable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -275,7 +285,18 @@ public class ManageCategory extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
-    
+    public void selectData(){
+        int rows=categorytable.getSelectedRow();
+        
+        String cid = categorytable.getValueAt(rows, 0).toString();
+        String cname =categorytable.getValueAt(rows, 1).toString();
+        String cdesc=categorytable.getValueAt(rows, 2).toString();
+        
+        cidbox.setText(cid);
+        cnamebox.setText(cname);
+        cdescbox.setText(cdesc);
+        
+    }
     public void reset(){
         cidbox.setText("");
         cnamebox.setText("");
@@ -301,6 +322,7 @@ public class ManageCategory extends javax.swing.JFrame {
             
             preparedstmt.execute();
             JOptionPane.showMessageDialog(null, "Add successful");
+            reset();
             
         } catch (Exception e) {
             System.out.println(e);
@@ -319,6 +341,7 @@ public class ManageCategory extends javax.swing.JFrame {
             stmt.executeUpdate(query);
             
             JOptionPane.showMessageDialog(null, "Delete successful");
+            reset();
             
         } catch (Exception e) {
             System.out.println(e);
@@ -346,6 +369,7 @@ public class ManageCategory extends javax.swing.JFrame {
             
             preparedstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update successful");
+            reset();
             
         } catch (Exception e) {
             System.out.println(e);
@@ -356,6 +380,14 @@ public class ManageCategory extends javax.swing.JFrame {
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         reset();
     }//GEN-LAST:event_clearActionPerformed
+
+    private void categorytableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categorytableMouseClicked
+        selectData();
+    }//GEN-LAST:event_categorytableMouseClicked
+
+    private void categorytableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categorytableKeyPressed
+        selectData();
+    }//GEN-LAST:event_categorytableKeyPressed
 
     /**
      * @param args the command line arguments
