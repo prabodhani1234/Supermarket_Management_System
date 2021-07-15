@@ -576,7 +576,11 @@ public class SalesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshcatActionPerformed
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        // TODO add your handling code here:
+        totalbox.setText("");
+        paybox.setText("");
+        balancebox.setText("");
+        billarea.setText("");
+        salestable.setModel(new DefaultTableModel(null,new String[]{"ID","Name","Quantity","Price","Total"}));
     }//GEN-LAST:event_refreshActionPerformed
 
     private void producttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producttableMouseClicked
