@@ -364,10 +364,26 @@ public class ManageProduct extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
+        try {
+            stmt=con.createStatement();
+            
+            int pid=Integer.parseInt(idbox.getText());
+            
+            String query="DELETE FROM product WHERE id='"+pid+"'";
+            
+            stmt.executeUpdate(query);
+            
+           
+            JOptionPane.showMessageDialog(null, "Delete successful");
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        dataLoad();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
