@@ -526,11 +526,13 @@ public class SalesPage extends javax.swing.JFrame {
             totbox.getText(),
             
         });
+        // calculate total of all item
         int total=0;
         for(int i=0;i<salestable.getRowCount();i++){
             total=total+Integer.parseInt(salestable.getValueAt(i, 4).toString());
         }
-        totalbox.setText(Integer.toString(total));
+        totalbox.setText(Integer.toString(total));// set total in total box
+        //refesh all text box
         idbox.setText("");
         namebox.setText("");
         pricebox.setText("");
