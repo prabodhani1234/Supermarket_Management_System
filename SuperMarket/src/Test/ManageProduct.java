@@ -387,7 +387,32 @@ public class ManageProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
+        try {
+            stmt=con.createStatement();
+            
+            int pid=Integer.parseInt(idbox.getText());
+            String pname=namebox.getText();
+            int pqty=Integer.parseInt(qtybox.getText());
+            int pprice=Integer.parseInt(pricebox.getText());
+            String pcategory=(String) categorycbox.getSelectedItem();
+            
+            String query ="UPDATE product SET Name=?,Quantity=?,Price=?,Category=? WHERE Id=?";
+            
+            ps=con.prepareStatement(query);
+            
+            ps.setString(1, pname);
+            ps.setInt(2, pqty);
+            ps.setInt(3, pprice);
+            ps.setString(4, pcategory);
+            ps.setInt(5, pid);
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update successful");
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        dataLoad();
     }//GEN-LAST:event_editActionPerformed
 
     private void cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanActionPerformed
