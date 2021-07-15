@@ -491,6 +491,16 @@ public class SalesPage extends javax.swing.JFrame {
             totbox.getText(),
             
         });
+        int total=0;
+        for(int i=0;i<salestable.getRowCount();i++){
+            total=total+Integer.parseInt(salestable.getValueAt(i, 4).toString());
+        }
+        totalbox.setText(Integer.toString(total));
+        idbox.setText("");
+        namebox.setText("");
+        pricebox.setText("");
+        totbox.setText("");
+        idbox.requestFocus();
         
     }//GEN-LAST:event_addActionPerformed
 
