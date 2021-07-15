@@ -101,6 +101,11 @@ public class ManageCategory extends javax.swing.JFrame {
         clear.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         clear.setForeground(new java.awt.Color(102, 0, 102));
         clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -270,6 +275,13 @@ public class ManageCategory extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    
+    public void reset(){
+        cidbox.setText("");
+        cnamebox.setText("");
+        cdescbox.setText("");
+    }
+    
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             
@@ -293,6 +305,7 @@ public class ManageCategory extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -310,6 +323,7 @@ public class ManageCategory extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -336,7 +350,12 @@ public class ManageCategory extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+        dataLoad();
     }//GEN-LAST:event_updateActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        reset();
+    }//GEN-LAST:event_clearActionPerformed
 
     /**
      * @param args the command line arguments
