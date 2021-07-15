@@ -182,6 +182,7 @@ public class ManageCategory extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        categorytable.setRowHeight(20);
         categorytable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 categorytableMouseClicked(evt);
