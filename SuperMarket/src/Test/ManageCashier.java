@@ -68,6 +68,8 @@ public class ManageCashier extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         cashiertable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         cashiertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -378,7 +380,7 @@ public class ManageCashier extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
