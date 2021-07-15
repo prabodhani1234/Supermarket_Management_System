@@ -54,9 +54,9 @@ public class SalesPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         totalbox = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        paybox = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        balancebox = new javax.swing.JTextField();
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         categorybox = new javax.swing.JComboBox<>();
@@ -237,14 +237,14 @@ public class SalesPage extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Payment");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        paybox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Balance");
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        balancebox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         displatbill.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         displatbill.setText("DISPLAY BILL");
@@ -262,11 +262,11 @@ public class SalesPage extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(displatbill, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(balancebox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(totalbox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paybox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -280,11 +280,11 @@ public class SalesPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(paybox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(balancebox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(displatbill, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -480,7 +480,18 @@ public class SalesPage extends javax.swing.JFrame {
         pricebox.setText(price);
     }
     
+    public void calBalance(){
+        int total=Integer.parseInt(totalbox.getText());
+        int pay=Integer.parseInt(paybox.getText());
+        
+        int bal =pay-total;
+        
+        balancebox.setText(String.valueOf(bal));
+    }
+    
+    
     public void printBill(){
+        //get table data
         DefaultTableModel model =new DefaultTableModel();
         model=(DefaultTableModel)salestable.getModel();
         
@@ -490,6 +501,7 @@ public class SalesPage extends javax.swing.JFrame {
         billarea.setText(billarea.getText()+"\n-------------------------------------");
         billarea.setText(billarea.getText()+"\n"+"Product"+"  "+"Qunatity"+"  "+"Price"+"     "+"Amount");
         
+        // get one by one table data
         for(int i=0;i<model.getRowCount();i++){
             String name=(String)model.getValueAt(i, 1);
             String qty=(String)model.getValueAt(i, 2);
@@ -528,7 +540,7 @@ public class SalesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_addActionPerformed
 
     private void displatbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displatbillActionPerformed
-        // TODO add your handling code here:
+        calBalance();
     }//GEN-LAST:event_displatbillActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
@@ -601,6 +613,7 @@ public class SalesPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JTextField balancebox;
     private javax.swing.JTextArea billarea;
     private javax.swing.JComboBox<String> categorybox;
     private javax.swing.JButton displatbill;
@@ -623,9 +636,8 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField namebox;
+    private javax.swing.JTextField paybox;
     private javax.swing.JTextField pricebox;
     private javax.swing.JButton print;
     private javax.swing.JTable producttable;
