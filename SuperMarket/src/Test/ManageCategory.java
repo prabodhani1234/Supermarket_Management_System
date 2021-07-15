@@ -170,6 +170,7 @@ public class ManageCategory extends javax.swing.JFrame {
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
+        categorytable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         categorytable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
