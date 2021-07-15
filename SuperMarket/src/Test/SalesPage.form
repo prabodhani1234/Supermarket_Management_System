@@ -342,7 +342,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="producttable">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -582,6 +582,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="DISPLAY BILL"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="displatbillActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -605,7 +608,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="categorybox" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="search" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -618,7 +621,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="categorybox" alignment="3" max="32767" attributes="0"/>
                               <Component id="search" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="refeshcat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -628,7 +631,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="categorybox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="15" style="0"/>
@@ -653,6 +656,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="refeshcat">
                   <Properties>
@@ -661,6 +667,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Refesh"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refeshcatActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -692,6 +701,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="REFESH"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refeshActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="print">
               <Properties>
@@ -703,6 +715,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="PRINT"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

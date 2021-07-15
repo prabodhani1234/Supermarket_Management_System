@@ -2,18 +2,23 @@
 package Test;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import net.proteanit.sql.DbUtils;
 
 
 public class SalesPage extends javax.swing.JFrame {
 
     Connection con=null;
     Statement stmt=null;
+    PreparedStatement preparedstmt=null;
+    ResultSet rs=null;
     
     public SalesPage() {
         initComponents();
         con=DatabaseConnecting.conection();
-        
+        dataLoad();
     }
 
     /**
@@ -40,7 +45,7 @@ public class SalesPage extends javax.swing.JFrame {
         add = new javax.swing.JButton();
         qtysprinne = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        producttable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -52,7 +57,7 @@ public class SalesPage extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categorybox = new javax.swing.JComboBox<>();
         search = new javax.swing.JButton();
         refeshcat = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -172,10 +177,10 @@ public class SalesPage extends javax.swing.JFrame {
                         .addGap(26, 26, 26))))
         );
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        producttable.setBackground(new java.awt.Color(204, 204, 204));
+        producttable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        producttable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        producttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -186,7 +191,7 @@ public class SalesPage extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(producttable);
 
         jTable2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -229,6 +234,11 @@ public class SalesPage extends javax.swing.JFrame {
 
         displatbill.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         displatbill.setText("DISPLAY BILL");
+        displatbill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displatbillActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -269,14 +279,24 @@ public class SalesPage extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(102, 0, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categorybox.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        categorybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         search.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         search.setText("Search");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
         refeshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         refeshcat.setText("Refesh");
+        refeshcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refeshcatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -284,7 +304,7 @@ public class SalesPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categorybox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -295,7 +315,7 @@ public class SalesPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1)
+                    .addComponent(categorybox)
                     .addComponent(search)
                     .addComponent(refeshcat))
                 .addContainerGap())
@@ -309,10 +329,20 @@ public class SalesPage extends javax.swing.JFrame {
         refesh.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         refesh.setForeground(new java.awt.Color(102, 0, 102));
         refesh.setText("REFESH");
+        refesh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refeshActionPerformed(evt);
+            }
+        });
 
         print.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         print.setForeground(new java.awt.Color(102, 0, 102));
         print.setText("PRINT");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -411,9 +441,41 @@ public class SalesPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void dataLoad(){
+        try {
+            String query="SELECT Id,Name,Quantity,Price,Category FROM product";
+            preparedstmt = con.prepareStatement(query);
+            rs = preparedstmt.executeQuery();
+            producttable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }    
+    }
+    
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
+
+    private void displatbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displatbillActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_displatbillActionPerformed
+
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_printActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void refeshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshcatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refeshcatActionPerformed
+
+    private void refeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refeshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,9 +514,9 @@ public class SalesPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JComboBox<String> categorybox;
     private javax.swing.JButton displatbill;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -472,7 +534,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
@@ -482,6 +543,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JButton print;
     private javax.swing.JTextField printbox;
+    private javax.swing.JTable producttable;
     private javax.swing.JSpinner qtysprinne;
     private javax.swing.JButton refesh;
     private javax.swing.JButton refeshcat;
