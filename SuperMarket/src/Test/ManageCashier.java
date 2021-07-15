@@ -68,6 +68,7 @@ public class ManageCashier extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
+        cashiertable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         cashiertable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
