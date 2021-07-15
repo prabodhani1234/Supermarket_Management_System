@@ -2,6 +2,7 @@
 package Test;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 
@@ -9,11 +10,12 @@ public class ManageProduct extends javax.swing.JFrame {
 
     Connection con=null;
     Statement stmt =null;
+    ResultSet rs=null;
     
     public ManageProduct() {
         initComponents();
         con=DatabaseConnecting.conection();
-        
+        setCategory();
     }
 
     /**
@@ -40,7 +42,7 @@ public class ManageProduct extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categorycbox = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -93,8 +95,6 @@ public class ManageProduct extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Category");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(102, 0, 102));
         jButton4.setText("ADD");
@@ -136,7 +136,7 @@ public class ManageProduct extends javax.swing.JFrame {
                         .addComponent(jTextField2)
                         .addComponent(jTextField3)
                         .addComponent(jTextField4)
-                        .addComponent(jComboBox1, 0, 198, Short.MAX_VALUE))
+                        .addComponent(categorycbox, 0, 198, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +167,7 @@ public class ManageProduct extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(categorycbox))
                 .addGap(84, 84, 84)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
@@ -265,7 +265,20 @@ public class ManageProduct extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setCategory(){
+        try {
+            stmt=con.createStatement();
+            String query="SELECT * FROM category";
+            rs=stmt.executeQuery(query);
+            
+            while(rs.next()){
+                String category=rs.getString("ca_name");
+                categorycbox.addItem(category);
+            }
+        } catch (Exception e) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -302,6 +315,7 @@ public class ManageProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> categorycbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -309,7 +323,6 @@ public class ManageProduct extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
