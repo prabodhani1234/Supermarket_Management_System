@@ -59,11 +59,11 @@ public class SalesPage extends javax.swing.JFrame {
         balancebox = new javax.swing.JTextField();
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        refeshcat = new javax.swing.JButton();
+        refreshcat = new javax.swing.JButton();
         searchbox = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         billarea = new javax.swing.JTextArea();
-        refesh = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         print = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -188,10 +188,7 @@ public class SalesPage extends javax.swing.JFrame {
         producttable.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         producttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
@@ -293,11 +290,11 @@ public class SalesPage extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(102, 0, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        refeshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        refeshcat.setText("Refesh");
-        refeshcat.addActionListener(new java.awt.event.ActionListener() {
+        refreshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        refreshcat.setText("Refresh");
+        refreshcat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refeshcatActionPerformed(evt);
+                refreshcatActionPerformed(evt);
             }
         });
 
@@ -316,14 +313,14 @@ public class SalesPage extends javax.swing.JFrame {
                 .addGap(128, 128, 128)
                 .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
-                .addComponent(refeshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(refreshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refeshcat)
+                    .addComponent(refreshcat)
                     .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -333,12 +330,12 @@ public class SalesPage extends javax.swing.JFrame {
         billarea.setRows(5);
         jScrollPane3.setViewportView(billarea);
 
-        refesh.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        refesh.setForeground(new java.awt.Color(102, 0, 102));
-        refesh.setText("REFESH");
-        refesh.addActionListener(new java.awt.event.ActionListener() {
+        refresh.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        refresh.setForeground(new java.awt.Color(102, 0, 102));
+        refresh.setText("REFRESH");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refeshActionPerformed(evt);
+                refreshActionPerformed(evt);
             }
         });
 
@@ -372,7 +369,7 @@ public class SalesPage extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refesh)
+                        .addComponent(refresh)
                         .addGap(18, 18, 18)
                         .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -394,7 +391,7 @@ public class SalesPage extends javax.swing.JFrame {
                     .addComponent(jScrollPane3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refesh)
+                    .addComponent(refresh)
                     .addComponent(print))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -570,13 +567,13 @@ public class SalesPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_printActionPerformed
 
-    private void refeshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshcatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refeshcatActionPerformed
+    private void refreshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshcatActionPerformed
+        dataLoad();
+    }//GEN-LAST:event_refreshcatActionPerformed
 
-    private void refeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshActionPerformed
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_refeshActionPerformed
+    }//GEN-LAST:event_refreshActionPerformed
 
     private void producttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producttableMouseClicked
         selectData();
@@ -664,8 +661,8 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton print;
     private javax.swing.JTable producttable;
     private javax.swing.JSpinner qtysprinne;
-    private javax.swing.JButton refesh;
-    private javax.swing.JButton refeshcat;
+    private javax.swing.JButton refresh;
+    private javax.swing.JButton refreshcat;
     private javax.swing.JTable salestable;
     private javax.swing.JTextField searchbox;
     private javax.swing.JTextField totalbox;
