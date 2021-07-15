@@ -20,7 +20,7 @@ public class SalesPage extends javax.swing.JFrame {
         initComponents();
         con=DatabaseConnecting.conection();
         dataLoad();
-        printBill();
+        
     }
 
     /**
@@ -508,9 +508,21 @@ public class SalesPage extends javax.swing.JFrame {
             String price=(String)model.getValueAt(i, 3);
             String amount=(String)model.getValueAt(i, 4);
             
-             billarea.setText(billarea.getText()+"\n"+name+"  "+qty+"  "+price+"     "+amount);
+             billarea.setText(billarea.getText()+"\n"+name+"      "+qty+"      "+price+"       "+amount);
         }
         
+        String total=totalbox.getText();
+        String payment=paybox.getText();
+        String balance=balancebox.getText();
+        
+        billarea.setText(billarea.getText()+"\n\n");
+        billarea.setText(billarea.getText()+"\n\t\t"+"   Total    : "+total+".00");
+        billarea.setText(billarea.getText()+"\n\t\t"+"   Payment  : "+payment+".00");
+        billarea.setText(billarea.getText()+"\n\t\t\t"+"    ---------");
+        billarea.setText(billarea.getText()+"\n\t\t"+"   Balance  : "+balance+".00");
+        billarea.setText(billarea.getText()+"\n\t\t\t"+"    =========");
+        billarea.setText(billarea.getText()+"\n\n-------------------------------------\n");
+        billarea.setText(billarea.getText()+"     THANK YOU AND COME ARGAIN");
         
     }
     
@@ -543,6 +555,7 @@ public class SalesPage extends javax.swing.JFrame {
 
     private void displatbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displatbillActionPerformed
         calBalance();
+        printBill();
     }//GEN-LAST:event_displatbillActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
