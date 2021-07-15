@@ -60,7 +60,7 @@ public class SalesPage extends javax.swing.JFrame {
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         refeshcat = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        searchbox = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         billarea = new javax.swing.JTextArea();
         refesh = new javax.swing.JButton();
@@ -197,6 +197,7 @@ public class SalesPage extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        producttable.setRowHeight(20);
         producttable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 producttableMouseClicked(evt);
@@ -290,7 +291,7 @@ public class SalesPage extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(102, 0, 102));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Product Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
         refeshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         refeshcat.setText("Refesh");
@@ -300,7 +301,12 @@ public class SalesPage extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        searchbox.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchboxKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -308,7 +314,7 @@ public class SalesPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(128, 128, 128)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(refeshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -318,7 +324,7 @@ public class SalesPage extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refeshcat)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -442,6 +448,21 @@ public class SalesPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void searchProduct(){
+        
+        String search=searchbox.getText();
+        try {
+            String query= "SELECT * FROM product WHERE Name LIKE '%"+search+"%' OR Id LIKE '%"+search+"%' ";
+            preparedstmt=con.prepareStatement(query);
+            stmt=con.createStatement();
+            rs=preparedstmt.executeQuery();
+            
+            producttable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+   }
     public void dataLoad(){
         try {
             String query="SELECT Id,Name,Quantity,Price,Category FROM product";
@@ -574,6 +595,10 @@ public class SalesPage extends javax.swing.JFrame {
         totbox.setText(String.valueOf(tot));
     }//GEN-LAST:event_qtysprinneStateChanged
 
+    private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
+        searchProduct();
+    }//GEN-LAST:event_searchboxKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -633,7 +658,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField paybox;
     private javax.swing.JTextField pricebox;
@@ -643,6 +667,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton refesh;
     private javax.swing.JButton refeshcat;
     private javax.swing.JTable salestable;
+    private javax.swing.JTextField searchbox;
     private javax.swing.JTextField totalbox;
     private javax.swing.JTextField totbox;
     // End of variables declaration//GEN-END:variables
