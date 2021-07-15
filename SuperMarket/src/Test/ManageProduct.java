@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 
 public class ManageProduct extends javax.swing.JFrame {
@@ -13,11 +14,13 @@ public class ManageProduct extends javax.swing.JFrame {
     Connection con=null;
     Statement stmt =null;
     ResultSet rs=null;
+    PreparedStatement ps =null;
     
     public ManageProduct() {
         initComponents();
         con=DatabaseConnecting.conection();
         setCategory();
+        dataLoad();
     }
 
     /**
@@ -46,9 +49,9 @@ public class ManageProduct extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         categorycbox = new javax.swing.JComboBox<>();
         add = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        clean = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         producttable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -109,17 +112,32 @@ public class ManageProduct extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(102, 0, 102));
-        jButton5.setText("DELETE");
+        delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        delete.setForeground(new java.awt.Color(102, 0, 102));
+        delete.setText("DELETE");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(102, 0, 102));
-        jButton6.setText("EDIT");
+        edit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        edit.setForeground(new java.awt.Color(102, 0, 102));
+        edit.setText("EDIT");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(102, 0, 102));
-        jButton7.setText("CLEAR");
+        clean.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        clean.setForeground(new java.awt.Color(102, 0, 102));
+        clean.setText("CLEAN");
+        clean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -149,10 +167,10 @@ public class ManageProduct extends javax.swing.JFrame {
                         .addComponent(categorycbox, 0, 198, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))
+                            .addComponent(clean, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delete))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
@@ -180,11 +198,11 @@ public class ManageProduct extends javax.swing.JFrame {
                     .addComponent(categorycbox))
                 .addGap(84, 84, 84)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(delete)
                     .addComponent(add)
-                    .addComponent(jButton6))
+                    .addComponent(edit))
                 .addGap(18, 18, 18)
-                .addComponent(jButton7)
+                .addComponent(clean)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
@@ -276,6 +294,17 @@ public class ManageProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void dataLoad(){
+        try {
+            String query ="SELECT Id,Name,Quantity,Price,Category FROM product";
+            ps=con.prepareStatement(query);
+            rs=ps.executeQuery();
+            producttable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             
@@ -304,6 +333,18 @@ public class ManageProduct extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_addActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editActionPerformed
+
+    private void cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cleanActionPerformed
     
     public void setCategory(){
         try {
@@ -357,13 +398,13 @@ public class ManageProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JComboBox<String> categorycbox;
+    private javax.swing.JButton clean;
+    private javax.swing.JButton delete;
+    private javax.swing.JButton edit;
     private javax.swing.JTextField idbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
