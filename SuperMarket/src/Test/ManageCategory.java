@@ -78,10 +78,20 @@ public class ManageCategory extends javax.swing.JFrame {
         delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         delete.setForeground(new java.awt.Color(102, 0, 102));
         delete.setText("DELETE");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         update.setForeground(new java.awt.Color(102, 0, 102));
         update.setText("EDIT");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         clear.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         clear.setForeground(new java.awt.Color(102, 0, 102));
@@ -267,6 +277,36 @@ public class ManageCategory extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_addActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        try {
+            
+            stmt=con.createStatement();
+            
+            int cid=Integer.parseInt(cidbox.getText());
+            
+            String cname =cnamebox.getText();
+            String cdesc=cdescbox.getText();
+            
+            String query ="UPDATE category SET ca_name=?,ca_disc=? WHERE ca_id=?";
+            
+            PreparedStatement preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setString(1, cname);
+            preparedstmt.setString(2, cdesc);
+            preparedstmt.setInt(3, cid);
+            
+            preparedstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update successful");
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
