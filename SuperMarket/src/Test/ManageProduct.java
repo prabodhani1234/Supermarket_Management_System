@@ -217,6 +217,16 @@ public class ManageProduct extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        producttable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                producttableMouseClicked(evt);
+            }
+        });
+        producttable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                producttableKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(producttable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -305,6 +315,28 @@ public class ManageProduct extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    
+    public void selectData(){
+        try {
+            int rows=producttable.getSelectedRow();
+        
+            String pid = producttable.getValueAt(rows, 0).toString();
+            String pname =producttable.getValueAt(rows, 1).toString();
+            String pqty=producttable.getValueAt(rows, 2).toString();
+            String pprice =producttable.getValueAt(rows, 3).toString();
+            String pcategory=producttable.getValueAt(rows, 4).toString();
+
+            idbox.setText(pid);
+            namebox.setText(pname);
+            qtybox.setText(pqty);
+            pricebox.setText(pprice);
+            categorycbox.setSelectedItem(pcategory);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             
@@ -345,6 +377,14 @@ public class ManageProduct extends javax.swing.JFrame {
     private void cleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cleanActionPerformed
+
+    private void producttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producttableMouseClicked
+        selectData();
+    }//GEN-LAST:event_producttableMouseClicked
+
+    private void producttableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_producttableKeyPressed
+        selectData();
+    }//GEN-LAST:event_producttableKeyPressed
     
     public void setCategory(){
         try {
