@@ -3,18 +3,23 @@ package Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 
 public class ManageCategory extends javax.swing.JFrame {
     
     Connection con =null;
     Statement stmt =null;
+    ResultSet rs=null;
+    PreparedStatement ps=null;
     
     public ManageCategory() {
         initComponents();
         con=DatabaseConnecting.conection();
+        dataLoad();
     }
 
     
@@ -253,6 +258,18 @@ public class ManageCategory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void dataLoad(){
+        try {
+            String query ="SELECT ca_id,ca_name,ca_disc FROM category";
+            ps=con.prepareStatement(query);
+            rs=ps.executeQuery();
+            categorytable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         try {
             
