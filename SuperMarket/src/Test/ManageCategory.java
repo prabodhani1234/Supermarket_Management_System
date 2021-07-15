@@ -279,7 +279,20 @@ public class ManageCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_addActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        
+        try {
+            stmt=con.createStatement();
+            
+            int cid=Integer.parseInt(cidbox.getText());
+            
+            String query="DELETE FROM category WHERE ca_id='"+cid+"'";
+            
+            stmt.executeUpdate(query);
+            
+            JOptionPane.showMessageDialog(null, "Delete successful");
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
