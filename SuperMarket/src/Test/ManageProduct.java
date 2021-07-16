@@ -1,6 +1,8 @@
 
 package Test;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +20,11 @@ public class ManageProduct extends javax.swing.JFrame {
     
     public ManageProduct() {
         initComponents();
+        //set center
+        Toolkit toolkit =getToolkit();
+        Dimension size =toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
         con=DatabaseConnecting.conection();
         setCategory();
         dataLoad();
