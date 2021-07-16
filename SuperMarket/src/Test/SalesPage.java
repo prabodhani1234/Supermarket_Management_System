@@ -69,7 +69,6 @@ public class SalesPage extends javax.swing.JFrame {
         displatbill = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         searchbox = new javax.swing.JTextField();
-        refreshcat = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         billarea = new javax.swing.JTextArea();
         refresh = new javax.swing.JButton();
@@ -307,31 +306,19 @@ public class SalesPage extends javax.swing.JFrame {
             }
         });
 
-        refreshcat.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        refreshcat.setText("Refresh");
-        refreshcat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshcatActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(refreshcat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(refreshcat)
-                    .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
@@ -603,10 +590,6 @@ public class SalesPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_printActionPerformed
 
-    private void refreshcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshcatActionPerformed
-        dataLoad();
-    }//GEN-LAST:event_refreshcatActionPerformed
-
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
         totalbox.setText("");
         paybox.setText("");
@@ -703,7 +686,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JTable producttable;
     private javax.swing.JSpinner qtysprinne;
     private javax.swing.JButton refresh;
-    private javax.swing.JButton refreshcat;
     private javax.swing.JTable salestable;
     private javax.swing.JTextField searchbox;
     private javax.swing.JTextField totalbox;
