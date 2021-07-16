@@ -465,7 +465,7 @@ public class SalesPage extends javax.swing.JFrame {
 
     
     public void date(){
-       DateTimeFormatter date=DateTimeFormatter.ofPattern("yyyy-mm-dd");
+       DateTimeFormatter date=DateTimeFormatter.ofPattern("yyyy-MM-dd");
        LocalDateTime now=LocalDateTime.now();
        dateL.setText(date.format(now));
     }
