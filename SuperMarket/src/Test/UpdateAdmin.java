@@ -86,10 +86,20 @@ public class UpdateAdmin extends javax.swing.JFrame {
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setForeground(new java.awt.Color(102, 0, 102));
         add.setText("ADD");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         update.setForeground(new java.awt.Color(102, 0, 102));
         update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -219,6 +229,37 @@ public class UpdateAdmin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_idKeyPressed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        try {
+            stmt=con.createStatement();
+            
+            int ad_id=Integer.parseInt(id.getText());
+            String ad_name =name.getText();
+            String ad_password=password.getText();
+            String ad_email=email.getText();
+            String ad_Phone=phone.getText();
+            
+            String query ="INSERT INTO admin(ad_id,ad_username,ad_password,ad_email,phone ) VALUES(?,?,?,?,?)";
+            
+            PreparedStatement preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setInt(1, ad_id);
+            preparedstmt.setString(2, ad_name);
+            preparedstmt.setString(3, ad_password);
+            preparedstmt.setString(4, ad_email);
+            preparedstmt.setString(5, ad_Phone);
+            
+            preparedstmt.execute();
+            JOptionPane.showMessageDialog(null, "Add successful");
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
