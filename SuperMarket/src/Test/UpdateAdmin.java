@@ -200,6 +200,14 @@ public class UpdateAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void reset(){
+        id.setText("");
+        name.setText("");
+        password.setText("");
+        email.setText("");
+        phone.setText("");
+        
+    }
     private void idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
         String codeid=id.getText();
@@ -252,8 +260,9 @@ public class UpdateAdmin extends javax.swing.JFrame {
             
             preparedstmt.execute();
             JOptionPane.showMessageDialog(null, "Add successful");
-            
+            reset();
         } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_addActionPerformed
 
@@ -279,7 +288,10 @@ public class UpdateAdmin extends javax.swing.JFrame {
             
             preparedstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update successful");
+            reset();
+            
         } catch (Exception e) {
+            System.out.println(e);
         }
     }//GEN-LAST:event_updateActionPerformed
 
