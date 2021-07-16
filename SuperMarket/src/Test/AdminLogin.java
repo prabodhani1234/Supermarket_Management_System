@@ -225,6 +225,8 @@ public class AdminLogin extends javax.swing.JFrame {
             while(rs.next()){
                 if(UserName.equals(rs.getString(2)) && Password.equals(rs.getString(3))){
                     setVisible(false);
+                    ManageCashier view =new ManageCashier();
+                    view.setVisible(true);
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Username or Password incorrect");// if username or password show message
