@@ -37,8 +37,8 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        admin = new javax.swing.JButton();
+        cashier = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -63,11 +63,16 @@ public class Home extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Test/welcome.png"))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setText("ADMIN");
+        admin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        admin.setText("ADMIN");
+        admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton2.setText("CASHIER");
+        cashier.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        cashier.setText("CASHIER");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,8 +83,8 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                    .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cashier, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -97,9 +102,9 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jButton1)
+                        .addComponent(admin)
                         .addGap(61, 61, 61)
-                        .addComponent(jButton2)))
+                        .addComponent(cashier)))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
@@ -116,6 +121,12 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        setVisible(false);
+        AdminLogin view=new AdminLogin();
+        view.setVisible(true);
+    }//GEN-LAST:event_adminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,8 +164,8 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton admin;
+    private javax.swing.JButton cashier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
