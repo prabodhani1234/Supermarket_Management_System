@@ -211,15 +211,15 @@ public class UpdateAdmin extends javax.swing.JFrame {
                 rs=preparedstmt.executeQuery();
                 
                 if(rs.next()==true){
-                    String pname=rs.getString("ad_username");
-                    String pprice =rs.getString("ad_password");
-                    String pemail =rs.getString("ad_email");
-                    String Phone =rs.getString("phone");
+                    String ad_name=rs.getString("ad_username");
+                    String ad_password =rs.getString("ad_password");
+                    String ad_email =rs.getString("ad_email");
+                    String ad_Phone =rs.getString("phone");
 
-                    name.setText(pname.trim());
-                    password.setText(pprice.trim());
-                    email.setText(pemail.trim());
-                    phone.setText(Phone.trim());
+                    name.setText(ad_name.trim());
+                    password.setText(ad_password.trim());
+                    email.setText(ad_email.trim());
+                    phone.setText(ad_Phone.trim());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "invalid");
@@ -258,7 +258,29 @@ public class UpdateAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_addActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
+        try {
+            stmt=con.createStatement();
+            
+            int ad_id=Integer.parseInt(id.getText());
+            String ad_name =name.getText();
+            String ad_password=password.getText();
+            String ad_email=email.getText();
+            String ad_phone=phone.getText();
+            
+            String query ="UPDATE admin SET ad_username=?,ad_password=?,ad_email=?,phone=? WHERE ad_id=?";
+            
+            PreparedStatement preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setString(1, ad_name);
+            preparedstmt.setString(2, ad_password);
+            preparedstmt.setString(3, ad_email);
+            preparedstmt.setString(4, ad_phone);
+            preparedstmt.setInt(5, ad_id);
+            
+            preparedstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Update successful");
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_updateActionPerformed
 
     /**
