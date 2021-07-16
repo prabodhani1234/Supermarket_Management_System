@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Test;
 
-/**
- *
- * @author User
- */
+import java.sql.Connection;
+import java.sql.Statement;
+
+
 public class UpdateAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UpdateAdmin
-     */
+    Connection con=null;
+    Statement stmt=null;
     public UpdateAdmin() {
         initComponents();
+        con=DatabaseConnecting.conection();
     }
 
     /**
@@ -54,6 +50,11 @@ public class UpdateAdmin extends javax.swing.JFrame {
         jLabel1.setText("Admin ID");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("User Name");
@@ -181,6 +182,10 @@ public class UpdateAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        
+    }//GEN-LAST:event_jTextField1KeyPressed
 
     /**
      * @param args the command line arguments
