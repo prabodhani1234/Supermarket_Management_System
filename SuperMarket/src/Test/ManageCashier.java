@@ -63,7 +63,7 @@ public class ManageCashier extends javax.swing.JFrame {
         product = new javax.swing.JButton();
         category = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        admin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -351,10 +351,15 @@ public class ManageCashier extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANAGE CASHIER");
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADMIN");
+        admin.setBackground(new java.awt.Color(102, 0, 102));
+        admin.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        admin.setForeground(new java.awt.Color(255, 255, 255));
+        admin.setText("ADMIN");
+        admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -364,7 +369,7 @@ public class ManageCashier extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(product)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,7 +392,7 @@ public class ManageCashier extends javax.swing.JFrame {
                     .addComponent(sales)
                     .addComponent(product)
                     .addComponent(category)
-                    .addComponent(jButton1))
+                    .addComponent(admin))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -582,6 +587,12 @@ public class ManageCashier extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_categoryActionPerformed
 
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        setVisible(false);
+        UpdateAdmin view=new UpdateAdmin();
+        view.setVisible(true);
+    }//GEN-LAST:event_adminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -619,6 +630,7 @@ public class ManageCashier extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton admin;
     private javax.swing.JTextField agebox;
     private javax.swing.JTable cashiertable;
     private javax.swing.JButton category;
@@ -628,7 +640,6 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JTextField emailbox;
     private javax.swing.JComboBox<String> gendercbox;
     private javax.swing.JTextField idbox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
