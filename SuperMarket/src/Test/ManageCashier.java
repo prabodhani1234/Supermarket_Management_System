@@ -59,9 +59,9 @@ public class ManageCashier extends javax.swing.JFrame {
         clean = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         search = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        sales = new javax.swing.JButton();
+        product = new javax.swing.JButton();
+        category = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -315,20 +315,35 @@ public class ManageCashier extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SALES");
+        sales.setBackground(new java.awt.Color(102, 0, 102));
+        sales.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        sales.setForeground(new java.awt.Color(255, 255, 255));
+        sales.setText("SALES");
+        sales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(102, 0, 102));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("PRODUCT");
+        product.setBackground(new java.awt.Color(102, 0, 102));
+        product.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        product.setForeground(new java.awt.Color(255, 255, 255));
+        product.setText("PRODUCT");
+        product.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(102, 0, 102));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("CATEGORY");
+        category.setBackground(new java.awt.Color(102, 0, 102));
+        category.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        category.setForeground(new java.awt.Color(255, 255, 255));
+        category.setText("CATEGORY");
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,11 +356,11 @@ public class ManageCashier extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sales, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(product)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(category))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 942, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,9 +373,9 @@ public class ManageCashier extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(sales)
+                    .addComponent(product)
+                    .addComponent(category))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -541,6 +556,20 @@ public class ManageCashier extends javax.swing.JFrame {
         search();
     }//GEN-LAST:event_searchKeyReleased
 
+    private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salesActionPerformed
+
+    private void productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productActionPerformed
+        setVisible(false);
+        ManageProduct view=new ManageProduct();
+        view.setVisible(true);
+    }//GEN-LAST:event_productActionPerformed
+
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -580,15 +609,13 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextField agebox;
     private javax.swing.JTable cashiertable;
+    private javax.swing.JButton category;
     private javax.swing.JButton clean;
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JTextField emailbox;
     private javax.swing.JComboBox<String> gendercbox;
     private javax.swing.JTextField idbox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -606,6 +633,8 @@ public class ManageCashier extends javax.swing.JFrame {
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField passwordbox;
     private javax.swing.JTextField phonebox;
+    private javax.swing.JButton product;
+    private javax.swing.JButton sales;
     private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }
