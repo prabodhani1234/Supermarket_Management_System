@@ -417,7 +417,9 @@ public class ManageCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_productActionPerformed
 
     private void cashierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        ManageCashier view=new ManageCashier();
+        view.setVisible(true);
     }//GEN-LAST:event_cashierActionPerformed
 
     /**
