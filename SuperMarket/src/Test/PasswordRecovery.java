@@ -18,6 +18,7 @@ public class PasswordRecovery extends javax.swing.JFrame {
         initComponents();
         con=DatabaseConnecting.conection();
         errormsg.setVisible(false);
+        errormsg2.setVisible(false);
     }
 
     /**
@@ -47,7 +48,7 @@ public class PasswordRecovery extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         passwordbox = new javax.swing.JTextField();
         search2 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        errormsg2 = new javax.swing.JLabel();
         update = new javax.swing.JButton();
         exit = new javax.swing.JButton();
 
@@ -149,10 +150,15 @@ public class PasswordRecovery extends javax.swing.JFrame {
         search2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         search2.setForeground(new java.awt.Color(102, 0, 102));
         search2.setText("SEARCH");
+        search2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search2ActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errormsg2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        errormsg2.setForeground(new java.awt.Color(153, 0, 0));
+        errormsg2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         update.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         update.setForeground(new java.awt.Color(102, 0, 102));
@@ -177,7 +183,7 @@ public class PasswordRecovery extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(errormsg2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -224,7 +230,7 @@ public class PasswordRecovery extends javax.swing.JFrame {
                 .addComponent(questionbox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errormsg2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -290,6 +296,30 @@ public class PasswordRecovery extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_search1ActionPerformed
 
+    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
+       try {
+            stmt=con.createStatement();
+            
+            String question=(String)questionbox.getText();
+            String answer = answerbox.getText();
+            String query="SELECT * FROM admin";
+            
+            rs= stmt.executeQuery(query);
+            
+            while (rs.next()){
+                 if(question.equals(rs.getString(6))&& answer.equals(rs.getString(7))){
+                     passwordbox.setText(rs.getString("ad_password"));
+                     
+                 }else{
+                     errormsg2.setVisible(true);
+                     errormsg2.setText("Wrong");
+                 }
+             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_search2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -328,10 +358,10 @@ public class PasswordRecovery extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField answerbox;
     private javax.swing.JLabel errormsg;
+    private javax.swing.JLabel errormsg2;
     private javax.swing.JButton exit;
     private javax.swing.JTextField idbox;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
