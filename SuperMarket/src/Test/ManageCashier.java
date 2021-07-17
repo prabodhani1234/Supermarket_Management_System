@@ -63,7 +63,6 @@ public class ManageCashier extends javax.swing.JFrame {
         product = new javax.swing.JButton();
         category = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        admin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -351,16 +350,6 @@ public class ManageCashier extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANAGE CASHIER");
 
-        admin.setBackground(new java.awt.Color(102, 0, 102));
-        admin.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        admin.setForeground(new java.awt.Color(255, 255, 255));
-        admin.setText("ADMIN");
-        admin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -368,14 +357,11 @@ public class ManageCashier extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sales, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(product)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(category)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sales, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(category))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(356, 356, 356)
                         .addComponent(jLabel1)))
@@ -391,8 +377,7 @@ public class ManageCashier extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sales)
                     .addComponent(product)
-                    .addComponent(category)
-                    .addComponent(admin))
+                    .addComponent(category))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -587,12 +572,6 @@ public class ManageCashier extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_categoryActionPerformed
 
-    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
-        setVisible(false);
-        UpdateAdmin view=new UpdateAdmin();
-        view.setVisible(true);
-    }//GEN-LAST:event_adminActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -630,7 +609,6 @@ public class ManageCashier extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
-    private javax.swing.JButton admin;
     private javax.swing.JTextField agebox;
     private javax.swing.JTable cashiertable;
     private javax.swing.JButton category;
