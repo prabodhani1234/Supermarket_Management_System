@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 public class PasswordRecovery extends javax.swing.JFrame {
@@ -163,6 +164,11 @@ public class PasswordRecovery extends javax.swing.JFrame {
         update.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         update.setForeground(new java.awt.Color(102, 0, 102));
         update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         exit.setForeground(new java.awt.Color(102, 0, 102));
@@ -319,6 +325,25 @@ public class PasswordRecovery extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_search2ActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        try {
+            stmt=con.createStatement();
+            int id=Integer.parseInt(idbox.getText());
+            String password=passwordbox.getText();
+            
+            String query ="UPDATE admin SET ad_password=? WHERE ad_id=?";
+            
+            preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setString(1, password);
+            preparedstmt.setInt(2, id);
+            preparedstmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Update successful");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
