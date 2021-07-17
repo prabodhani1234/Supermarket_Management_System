@@ -41,7 +41,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         idbox = new javax.swing.JTextField();
         create = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,12 +85,12 @@ public class AdminRegistration extends javax.swing.JFrame {
             }
         });
 
-        cancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cancel.setForeground(new java.awt.Color(102, 0, 102));
-        cancel.setText("CANCEL");
-        cancel.addActionListener(new java.awt.event.ActionListener() {
+        exit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        exit.setForeground(new java.awt.Color(102, 0, 102));
+        exit.setText("EXIT");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
@@ -112,15 +112,14 @@ public class AdminRegistration extends javax.swing.JFrame {
                         .addComponent(idbox, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cancel)
-                                .addGap(48, 48, 48)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(create))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passwordbox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(emailbox, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(phonebox))
+                            .addComponent(passwordbox)
+                            .addComponent(emailbox, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(phonebox)
                             .addComponent(namebox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
@@ -148,9 +147,9 @@ public class AdminRegistration extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phonebox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exit)
+                    .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
         );
 
@@ -195,6 +194,14 @@ public class AdminRegistration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void reset(){
+        idbox.setText("");
+        namebox.setText("");
+        passwordbox.setText("");
+        emailbox.setText("");
+        phonebox.setText("");
+    }
+    
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         try {
             stmt=con.createStatement();
@@ -222,18 +229,19 @@ public class AdminRegistration extends javax.swing.JFrame {
             
             preparedstmt.execute();
             JOptionPane.showMessageDialog(null, "Add successful");
-            setVisible(false);
-            AdminLogin view=new AdminLogin();
-            view.setVisible(true);
+            reset();
+            
            
         } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_createActionPerformed
 
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        setVisible(false);
+        AdminLogin view=new AdminLogin();
+        view.setVisible(true);
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,9 +279,9 @@ public class AdminRegistration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancel;
     private javax.swing.JButton create;
     private javax.swing.JTextField emailbox;
+    private javax.swing.JButton exit;
     private javax.swing.JTextField idbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
