@@ -40,9 +40,9 @@ public class ManageProduct extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        sales = new javax.swing.JButton();
+        cashier = new javax.swing.JButton();
+        category = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,20 +67,30 @@ public class ManageProduct extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SALES");
+        sales.setBackground(new java.awt.Color(102, 0, 102));
+        sales.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        sales.setForeground(new java.awt.Color(255, 255, 255));
+        sales.setText("SALES");
 
-        jButton2.setBackground(new java.awt.Color(102, 0, 102));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CASHIER");
+        cashier.setBackground(new java.awt.Color(102, 0, 102));
+        cashier.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        cashier.setForeground(new java.awt.Color(255, 255, 255));
+        cashier.setText("CASHIER");
+        cashier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashierActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(102, 0, 102));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("CATEGORY");
+        category.setBackground(new java.awt.Color(102, 0, 102));
+        category.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        category.setForeground(new java.awt.Color(255, 255, 255));
+        category.setText("CATEGORY");
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -267,11 +277,11 @@ public class ManageProduct extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sales, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cashier, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(category)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,9 +296,9 @@ public class ManageProduct extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(sales)
+                    .addComponent(cashier)
+                    .addComponent(category))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -443,6 +453,18 @@ public class ManageProduct extends javax.swing.JFrame {
     private void producttableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_producttableKeyPressed
         selectData();
     }//GEN-LAST:event_producttableKeyPressed
+
+    private void cashierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierActionPerformed
+        setVisible(false);
+        ManageCashier view=new ManageCashier();
+        view.setVisible(true);
+    }//GEN-LAST:event_cashierActionPerformed
+
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
+        setVisible(false);
+        ManageCategory view=new ManageCategory();
+        view.setVisible(true);
+    }//GEN-LAST:event_categoryActionPerformed
     
     public void setCategory(){
         try {
@@ -495,14 +517,13 @@ public class ManageProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton cashier;
+    private javax.swing.JButton category;
     private javax.swing.JComboBox<String> categorycbox;
     private javax.swing.JButton clean;
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JTextField idbox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -517,5 +538,6 @@ public class ManageProduct extends javax.swing.JFrame {
     private javax.swing.JTextField pricebox;
     private javax.swing.JTable producttable;
     private javax.swing.JTextField qtybox;
+    private javax.swing.JButton sales;
     // End of variables declaration//GEN-END:variables
 }
