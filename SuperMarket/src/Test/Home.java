@@ -75,6 +75,11 @@ public class Home extends javax.swing.JFrame {
         cashier.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         cashier.setText("CASHIER");
         cashier.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cashier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,6 +137,12 @@ public class Home extends javax.swing.JFrame {
         AdminLogin view=new AdminLogin();
         view.setVisible(true);
     }//GEN-LAST:event_adminActionPerformed
+
+    private void cashierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierActionPerformed
+        setVisible(false);
+        cashier view=new cashier();
+        view.setVisible(true);
+    }//GEN-LAST:event_cashierActionPerformed
 
     /**
      * @param args the command line arguments
