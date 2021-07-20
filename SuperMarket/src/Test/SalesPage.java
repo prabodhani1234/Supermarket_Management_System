@@ -73,7 +73,7 @@ public class SalesPage extends javax.swing.JFrame {
         billarea = new javax.swing.JTextArea();
         refresh = new javax.swing.JButton();
         print = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         dateL = new javax.swing.JLabel();
 
@@ -393,10 +393,15 @@ public class SalesPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("LOG OUT");
+        logout.setBackground(new java.awt.Color(102, 0, 102));
+        logout.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setText("LOG OUT");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -413,7 +418,7 @@ public class SalesPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1056, 1056, 1056))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -429,7 +434,7 @@ public class SalesPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(logout)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(dateL, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -619,6 +624,10 @@ public class SalesPage extends javax.swing.JFrame {
         searchProduct();
     }//GEN-LAST:event_searchboxKeyReleased
 
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_logoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -661,7 +670,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JLabel dateL;
     private javax.swing.JButton displatbill;
     private javax.swing.JTextField idbox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -679,6 +687,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton logout;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField paybox;
     private javax.swing.JTextField pricebox;
