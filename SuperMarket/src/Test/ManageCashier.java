@@ -557,7 +557,9 @@ public class ManageCashier extends javax.swing.JFrame {
     }//GEN-LAST:event_searchKeyReleased
 
     private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        SalesPage view=new SalesPage();
+        view.setVisible(true);
     }//GEN-LAST:event_salesActionPerformed
 
     private void productActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productActionPerformed
