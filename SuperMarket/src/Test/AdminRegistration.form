@@ -293,10 +293,13 @@
                   <Font name="Tahoma" size="16" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="What is Your pate name?"/>
-                    <StringItem index="1" value="What is your favorit color?"/>
+                  <StringArray count="6">
+                    <StringItem index="0" value="What is Your pet name?"/>
+                    <StringItem index="1" value="what is your favorite color?"/>
                     <StringItem index="2" value="What is your city?"/>
+                    <StringItem index="3" value="What is your village?"/>
+                    <StringItem index="4" value="Who is your hero?"/>
+                    <StringItem index="5" value="What is your first name?"/>
                   </StringArray>
                 </Property>
               </Properties>

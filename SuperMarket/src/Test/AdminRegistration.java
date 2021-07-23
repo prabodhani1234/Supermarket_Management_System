@@ -109,7 +109,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         jLabel7.setText("Question");
 
         item.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is Your pate name?", "What is your favorit color?", "What is your city?" }));
+        item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is Your pet name?", "what is your favorite color?", "What is your city?", "What is your village?", "Who is your hero?", "What is your first name?" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Answer");
