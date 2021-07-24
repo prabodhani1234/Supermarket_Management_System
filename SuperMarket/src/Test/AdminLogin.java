@@ -43,7 +43,7 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         createaccount = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        recovery = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -147,13 +147,13 @@ public class AdminLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Recovery Password");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        recovery.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        recovery.setForeground(new java.awt.Color(0, 0, 153));
+        recovery.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recovery.setText("Recovery Password");
+        recovery.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+                recoveryMouseClicked(evt);
             }
         });
 
@@ -183,7 +183,7 @@ public class AdminLogin extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                                 .addComponent(password)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(recovery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(jLabel1)))
@@ -207,7 +207,7 @@ public class AdminLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(createaccount, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(recovery, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +253,7 @@ public class AdminLogin extends javax.swing.JFrame {
             while(rs.next()){
                 if(UserName.equals(rs.getString(2)) && Password.equals(rs.getString(3))){
                     setVisible(false);
-                    ManageCashier view =new ManageCashier();
+                    ManageProduct view =new ManageProduct();
                     view.setVisible(true);
                     
                 }else{
@@ -271,11 +271,11 @@ public class AdminLogin extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_createaccountMouseClicked
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+    private void recoveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recoveryMouseClicked
         setVisible(false);
         PasswordRecovery view=new PasswordRecovery();
         view.setVisible(true);
-    }//GEN-LAST:event_jLabel9MouseClicked
+    }//GEN-LAST:event_recoveryMouseClicked
 
     /**
      * @param args the command line arguments
@@ -324,10 +324,10 @@ public class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel recovery;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
