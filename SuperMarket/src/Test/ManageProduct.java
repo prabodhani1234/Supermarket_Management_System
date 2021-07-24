@@ -120,6 +120,8 @@ public class ManageProduct extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Category");
 
+        categorycbox.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setForeground(new java.awt.Color(102, 0, 102));
         add.setText("ADD");
