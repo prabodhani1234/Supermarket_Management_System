@@ -71,6 +71,11 @@ public class ManageProduct extends javax.swing.JFrame {
         sales.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         sales.setForeground(new java.awt.Color(255, 255, 255));
         sales.setText("SALES");
+        sales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesActionPerformed(evt);
+            }
+        });
 
         cashier.setBackground(new java.awt.Color(102, 0, 102));
         cashier.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -467,6 +472,12 @@ public class ManageProduct extends javax.swing.JFrame {
         ManageCategory view=new ManageCategory();
         view.setVisible(true);
     }//GEN-LAST:event_categoryActionPerformed
+
+    private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
+        setVisible(false);
+        SalesPage view=new SalesPage();
+        view.setVisible(true);
+    }//GEN-LAST:event_salesActionPerformed
     
     public void setCategory(){
         try {

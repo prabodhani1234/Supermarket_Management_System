@@ -224,6 +224,11 @@ public class ManageCategory extends javax.swing.JFrame {
         sales.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         sales.setForeground(new java.awt.Color(255, 255, 255));
         sales.setText("SALES");
+        sales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesActionPerformed(evt);
+            }
+        });
 
         product.setBackground(new java.awt.Color(102, 0, 102));
         product.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -423,6 +428,12 @@ public class ManageCategory extends javax.swing.JFrame {
         ManageCashier view=new ManageCashier();
         view.setVisible(true);
     }//GEN-LAST:event_cashierActionPerformed
+
+    private void salesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesActionPerformed
+        setVisible(false);
+        SalesPage view=new SalesPage();
+        view.setVisible(true);
+    }//GEN-LAST:event_salesActionPerformed
 
     /**
      * @param args the command line arguments
