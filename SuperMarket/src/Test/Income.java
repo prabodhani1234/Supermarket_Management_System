@@ -41,6 +41,8 @@ public class Income extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         totalbox = new javax.swing.JTextField();
         search = new javax.swing.JButton();
+        dispaly = new javax.swing.JButton();
+        print = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -64,6 +66,7 @@ public class Income extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
 
         printarea.setColumns(20);
+        printarea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         printarea.setRows(5);
         jScrollPane2.setViewportView(printarea);
 
@@ -93,7 +96,7 @@ public class Income extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        item.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        item.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Daily", "Manthly", "Anual" }));
         item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +105,7 @@ public class Income extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("SELECT");
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -146,6 +150,19 @@ public class Income extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dispaly.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        dispaly.setForeground(new java.awt.Color(102, 0, 102));
+        dispaly.setText("DISPALY ");
+        dispaly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispalyActionPerformed(evt);
+            }
+        });
+
+        print.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        print.setForeground(new java.awt.Color(102, 0, 102));
+        print.setText("PRINT");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -156,7 +173,7 @@ public class Income extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(item, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(item, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,25 +181,34 @@ public class Income extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))))
+                            .addComponent(jScrollPane2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(dispaly)
+                        .addGap(18, 18, 18)
+                        .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(item, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(item, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dispaly, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -225,7 +251,7 @@ public class Income extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,7 +262,7 @@ public class Income extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -276,7 +302,24 @@ public class Income extends javax.swing.JFrame {
         }
         totalbox.setText(Integer.toString(sum));
     }
-    
+     public void printBill(){
+        String tot=totalbox.getText();
+        String range=(String) item.getSelectedItem();
+        //get table data
+        DefaultTableModel model =new DefaultTableModel();
+        model=(DefaultTableModel)table.getModel();
+        
+        printarea.setText(printarea.getText()+"\t\t**SUPERMARKET**");
+        printarea.setText(printarea.getText()+"\n=============================================");
+        printarea.setText(printarea.getText()+"\n"+"Contact No - 0376897532"+"\n"+"Address    - Kurunagala");
+        printarea.setText(printarea.getText()+"\n---------------------------------------------");
+        printarea.setText(printarea.getText()+"\nRange\t\t:  "+range);
+        printarea.setText(printarea.getText()+"\n\n");
+        printarea.setText(printarea.getText()+"Income is (RS)  : "+tot+".00");
+        printarea.setText(printarea.getText()+"\n---------------------------------------------");
+        printarea.setText(printarea.getText()+"\n"+"\t\t  GOOD LUCK");
+     }
+     
     private void itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemActionPerformed
@@ -292,6 +335,10 @@ public class Income extends javax.swing.JFrame {
     private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
         search();
     }//GEN-LAST:event_searchboxKeyReleased
+
+    private void dispalyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispalyActionPerformed
+        printBill();
+    }//GEN-LAST:event_dispalyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,6 +376,7 @@ public class Income extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dispaly;
     private javax.swing.JComboBox<String> item;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -340,6 +388,7 @@ public class Income extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton print;
     private javax.swing.JTextArea printarea;
     private javax.swing.JButton search;
     private javax.swing.JTextField searchbox;
