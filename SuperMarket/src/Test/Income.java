@@ -69,6 +69,12 @@ public class Income extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 0, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchboxKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -245,6 +251,20 @@ public class Income extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    public void search(){
+        String srch=searchbox.getText();
+        
+        try {
+            String query= "SELECT * FROM bill WHERE Date LIKE '%"+srch+"%' OR Cashier_Name LIKE '%"+srch+"%' ";
+            preparestmt=con.prepareStatement(query);
+            stmt=con.createStatement();
+            rs=preparestmt.executeQuery();
+            table.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     private void itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemActionPerformed
@@ -256,6 +276,10 @@ public class Income extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchActionPerformed
+
+    private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
+        search();
+    }//GEN-LAST:event_searchboxKeyReleased
 
     /**
      * @param args the command line arguments
