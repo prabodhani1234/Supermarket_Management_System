@@ -335,7 +335,9 @@ public class Income extends javax.swing.JFrame {
     }//GEN-LAST:event_itemActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        
+        setVisible(false);
+        ManageCashier view=new ManageCashier();
+        view.setVisible(true);
     }//GEN-LAST:event_exitActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
