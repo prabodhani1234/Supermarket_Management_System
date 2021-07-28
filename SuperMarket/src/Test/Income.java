@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 
@@ -38,7 +39,7 @@ public class Income extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        totalbox = new javax.swing.JTextField();
         search = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -109,8 +110,8 @@ public class Income extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Income");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 0, 102));
+        totalbox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        totalbox.setForeground(new java.awt.Color(102, 0, 102));
 
         search.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         search.setForeground(new java.awt.Color(102, 0, 102));
@@ -129,7 +130,7 @@ public class Income extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1)
+                .addComponent(totalbox)
                 .addGap(18, 18, 18)
                 .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -140,7 +141,7 @@ public class Income extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalbox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -265,6 +266,17 @@ public class Income extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+    
+    public void total(){
+        DefaultTableModel model =new DefaultTableModel();
+        model=(DefaultTableModel)table.getModel();
+        int sum=0;
+        for(int i=0;i<table.getRowCount();i++){
+            sum=sum+Integer.parseInt(table.getValueAt(i, 2).toString());
+        }
+        totalbox.setText(Integer.toString(sum));
+    }
+    
     private void itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemActionPerformed
@@ -274,7 +286,7 @@ public class Income extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
+        total();
     }//GEN-LAST:event_searchActionPerformed
 
     private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
@@ -328,10 +340,10 @@ public class Income extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea printarea;
     private javax.swing.JButton search;
     private javax.swing.JTextField searchbox;
     private javax.swing.JTable table;
+    private javax.swing.JTextField totalbox;
     // End of variables declaration//GEN-END:variables
 }
