@@ -41,7 +41,7 @@ public class Income extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         totalbox = new javax.swing.JTextField();
         search = new javax.swing.JButton();
-        dispaly = new javax.swing.JButton();
+        display = new javax.swing.JButton();
         print = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -150,18 +150,23 @@ public class Income extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        dispaly.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        dispaly.setForeground(new java.awt.Color(102, 0, 102));
-        dispaly.setText("DISPALY ");
-        dispaly.addActionListener(new java.awt.event.ActionListener() {
+        display.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        display.setForeground(new java.awt.Color(102, 0, 102));
+        display.setText("DISPLAY ");
+        display.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dispalyActionPerformed(evt);
+                displayActionPerformed(evt);
             }
         });
 
         print.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         print.setForeground(new java.awt.Color(102, 0, 102));
         print.setText("PRINT");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -184,7 +189,7 @@ public class Income extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(dispaly)
+                        .addComponent(display)
                         .addGap(18, 18, 18)
                         .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -207,7 +212,7 @@ public class Income extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dispaly, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(display, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -336,9 +341,18 @@ public class Income extends javax.swing.JFrame {
         search();
     }//GEN-LAST:event_searchboxKeyReleased
 
-    private void dispalyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispalyActionPerformed
+    private void displayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayActionPerformed
         printBill();
-    }//GEN-LAST:event_dispalyActionPerformed
+    }//GEN-LAST:event_displayActionPerformed
+
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        try {
+            printarea.print();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_printActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,7 +390,7 @@ public class Income extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dispaly;
+    private javax.swing.JButton display;
     private javax.swing.JComboBox<String> item;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
