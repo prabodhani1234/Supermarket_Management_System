@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -76,7 +77,7 @@ public class SalesPage extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         dateL = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        cashier_name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -412,7 +413,7 @@ public class SalesPage extends javax.swing.JFrame {
         dateL.setForeground(new java.awt.Color(255, 255, 255));
         dateL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cashier_name.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -424,7 +425,7 @@ public class SalesPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(186, 186, 186)
                         .addComponent(jLabel1)
                         .addGap(163, 163, 163)
@@ -446,7 +447,7 @@ public class SalesPage extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -560,6 +561,32 @@ public class SalesPage extends javax.swing.JFrame {
         billarea.setText(billarea.getText()+"     THANK YOU AND COME ARGAIN");
         
     }
+    public void billDataAddDB(){
+        try{
+            stmt=con.createStatement();
+            
+            String name=cashier_name.getText();
+            int tot=Integer.parseInt(totalbox.getText());
+            String date=dateL.getText();
+            
+            
+            String query ="INSERT INTO bill(Cashier_Name,Total,Date ) VALUES(?,?,?)";
+            
+            preparedstmt=con.prepareStatement(query);
+            
+            preparedstmt.setString(1, name);
+            preparedstmt.setInt(2, tot);
+            preparedstmt.setString(3, date);
+            
+            
+            preparedstmt.execute();
+            JOptionPane.showMessageDialog(null, "Add successful");
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         DefaultTableModel model =new DefaultTableModel();
@@ -591,6 +618,7 @@ public class SalesPage extends javax.swing.JFrame {
     private void displatbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displatbillActionPerformed
         calBalance();
         printBill();
+        billDataAddDB();
     }//GEN-LAST:event_displatbillActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
@@ -673,6 +701,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextField balancebox;
     private javax.swing.JTextArea billarea;
+    private javax.swing.JTextField cashier_name;
     private javax.swing.JLabel dateL;
     private javax.swing.JButton displatbill;
     private javax.swing.JTextField idbox;
@@ -693,7 +722,6 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton logout;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField paybox;
