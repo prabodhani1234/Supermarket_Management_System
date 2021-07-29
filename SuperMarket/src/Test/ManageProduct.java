@@ -62,6 +62,7 @@ public class ManageProduct extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         producttable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        income = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,6 +280,16 @@ public class ManageProduct extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MANAGE PRODUCT");
 
+        income.setBackground(new java.awt.Color(102, 0, 102));
+        income.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        income.setForeground(new java.awt.Color(255, 255, 255));
+        income.setText("INCOME");
+        income.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -289,6 +300,8 @@ public class ManageProduct extends javax.swing.JFrame {
                 .addComponent(cashier, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(category)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(income, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -305,7 +318,8 @@ public class ManageProduct extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sales)
                     .addComponent(cashier)
-                    .addComponent(category))
+                    .addComponent(category)
+                    .addComponent(income))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -478,6 +492,12 @@ public class ManageProduct extends javax.swing.JFrame {
         SalesPage view=new SalesPage();
         view.setVisible(true);
     }//GEN-LAST:event_salesActionPerformed
+
+    private void incomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeActionPerformed
+        setVisible(false);
+        Income view=new Income();
+        view.setVisible(true);
+    }//GEN-LAST:event_incomeActionPerformed
     
     public void setCategory(){
         try {
@@ -537,6 +557,7 @@ public class ManageProduct extends javax.swing.JFrame {
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JTextField idbox;
+    private javax.swing.JButton income;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
