@@ -83,6 +83,7 @@ public class ManageCashier extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
+        cashiertable.setRowHeight(20);
         cashiertable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cashiertableMouseClicked(evt);
