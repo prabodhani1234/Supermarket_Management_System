@@ -55,6 +55,7 @@ public class ManageCategory extends javax.swing.JFrame {
         sales = new javax.swing.JButton();
         product = new javax.swing.JButton();
         cashier = new javax.swing.JButton();
+        income = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -250,6 +251,16 @@ public class ManageCategory extends javax.swing.JFrame {
             }
         });
 
+        income.setBackground(new java.awt.Color(102, 0, 102));
+        income.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        income.setForeground(new java.awt.Color(255, 255, 255));
+        income.setText("INCOME");
+        income.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -260,6 +271,8 @@ public class ManageCategory extends javax.swing.JFrame {
                 .addComponent(product)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cashier, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(income, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +290,8 @@ public class ManageCategory extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sales)
                     .addComponent(product)
-                    .addComponent(cashier))
+                    .addComponent(cashier)
+                    .addComponent(income))
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -435,6 +449,12 @@ public class ManageCategory extends javax.swing.JFrame {
         view.setVisible(true);
     }//GEN-LAST:event_salesActionPerformed
 
+    private void incomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeActionPerformed
+        setVisible(false);
+        Income view=new Income();
+        view.setVisible(true);
+    }//GEN-LAST:event_incomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -479,6 +499,7 @@ public class ManageCategory extends javax.swing.JFrame {
     private javax.swing.JButton clear;
     private javax.swing.JTextField cnamebox;
     private javax.swing.JButton delete;
+    private javax.swing.JButton income;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
