@@ -581,7 +581,7 @@ public class SalesPage extends javax.swing.JFrame {
             
             
             preparedstmt.execute();
-            JOptionPane.showMessageDialog(null, "Add successful");
+            
             
         }
         catch(Exception e){
