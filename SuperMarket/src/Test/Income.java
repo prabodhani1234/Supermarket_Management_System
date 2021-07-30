@@ -327,7 +327,7 @@ public class Income extends javax.swing.JFrame {
         printarea.setText(printarea.getText()+"\n\n");
         printarea.setText(printarea.getText()+"Income is (RS)  : "+tot+".00");
         printarea.setText(printarea.getText()+"\n---------------------------------------------");
-        printarea.setText(printarea.getText()+"\n"+"\t\t  GOOD LUCK");
+        printarea.setText(printarea.getText()+"\n"+"\t\t  GOOD LUCK\n");
      }
      
     private void itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActionPerformed
