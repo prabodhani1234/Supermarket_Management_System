@@ -31,6 +31,7 @@ public class SalesPage extends javax.swing.JFrame {
         con=DatabaseConnecting.conection();
         dataLoad();
         date();
+        setCashierName();
     }
 
     /**
@@ -77,7 +78,7 @@ public class SalesPage extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         dateL = new javax.swing.JLabel();
-        cashier_name = new javax.swing.JTextField();
+        cashier_name = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -414,7 +415,7 @@ public class SalesPage extends javax.swing.JFrame {
         dateL.setForeground(new java.awt.Color(255, 255, 255));
         dateL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        cashier_name.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cashier_name.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -427,11 +428,11 @@ public class SalesPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157)
+                        .addGap(30, 30, 30)
+                        .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(196, 196, 196)
                         .addComponent(jLabel1))
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(163, 163, 163)
                 .addComponent(dateL, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(66, Short.MAX_VALUE))
@@ -448,7 +449,7 @@ public class SalesPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cashier_name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -476,6 +477,21 @@ public class SalesPage extends javax.swing.JFrame {
        LocalDateTime now=LocalDateTime.now();
        dateL.setText(date.format(now));
     }
+    
+    public void setCashierName(){
+        try {
+            stmt=con.createStatement();
+            String query="SELECT * FROM cashier";
+            rs=stmt.executeQuery(query);
+            
+            while(rs.next()){
+                String name=rs.getString("username");
+                cashier_name.addItem(name);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    } 
     
     public void searchProduct(){
         
@@ -566,7 +582,7 @@ public class SalesPage extends javax.swing.JFrame {
         try{
             stmt=con.createStatement();
             
-            String name=cashier_name.getText();
+            String name=(String) cashier_name.getSelectedItem();
             int tot=Integer.parseInt(totalbox.getText());
             String date=dateL.getText();
             
@@ -702,7 +718,7 @@ public class SalesPage extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextField balancebox;
     private javax.swing.JTextArea billarea;
-    private javax.swing.JTextField cashier_name;
+    private javax.swing.JComboBox<String> cashier_name;
     private javax.swing.JLabel dateL;
     private javax.swing.JButton displatbill;
     private javax.swing.JTextField idbox;
