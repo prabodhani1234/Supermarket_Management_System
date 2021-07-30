@@ -345,7 +345,7 @@ public class ManageProduct extends javax.swing.JFrame {
 
     public void dataLoad(){
         try {
-            String query ="SELECT Id,Name,Quantity,Price,Category FROM product";
+            String query ="SELECT Id AS ID,Name,Quantity,Price,Category FROM product";
             preparedstmt=con.prepareStatement(query);
             rs=preparedstmt.executeQuery();
             producttable.setModel(DbUtils.resultSetToTableModel(rs));

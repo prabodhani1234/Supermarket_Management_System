@@ -70,6 +70,7 @@ public class Income extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        table.setRowHeight(20);
         jScrollPane1.setViewportView(table);
 
         printarea.setColumns(20);

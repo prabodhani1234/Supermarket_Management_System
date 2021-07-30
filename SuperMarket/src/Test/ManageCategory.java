@@ -318,7 +318,7 @@ public class ManageCategory extends javax.swing.JFrame {
     
     public void dataLoad(){
         try {
-            String query ="SELECT ca_id,ca_name,ca_description FROM category";
+            String query ="SELECT ca_id AS ID,ca_name AS Name,ca_description AS Description FROM category";
             preparedstmt=con.prepareStatement(query);
             rs=preparedstmt.executeQuery();
             categorytable.setModel(DbUtils.resultSetToTableModel(rs));

@@ -420,7 +420,7 @@ public class ManageCashier extends javax.swing.JFrame {
     
     public void dataLoad(){
         try {
-            String query="SELECT Id,username,password,email,phone,age,gender FROM cashier";
+            String query="SELECT Id As ID,username AS Username,password AS Password,email AS Email,phone AS Phone_No,age AS Age,gender AS Gender FROM cashier";
             preparedstmt=con.prepareStatement(query);
             rs=preparedstmt.executeQuery();
             cashiertable.setModel(DbUtils.resultSetToTableModel(rs));
