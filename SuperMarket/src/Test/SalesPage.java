@@ -481,7 +481,7 @@ public class SalesPage extends javax.swing.JFrame {
         
         String search=searchbox.getText();
         try {
-            String query= "SELECT * FROM product WHERE Name LIKE '%"+search+"%' OR Id LIKE '%"+search+"%' ";
+            String query= "SELECT * FROM product WHERE Name LIKE '%"+search+"%' OR Id LIKE '%"+search+"%' OR Category LIKE '%"+search+"%' ";
             preparedstmt=con.prepareStatement(query);
             stmt=con.createStatement();
             rs=preparedstmt.executeQuery();
