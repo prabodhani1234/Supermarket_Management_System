@@ -81,6 +81,7 @@ public class Income extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 0, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        searchbox.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchboxKeyReleased(evt);
@@ -105,7 +106,7 @@ public class Income extends javax.swing.JFrame {
         );
 
         item.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Daily", "Manthly", "Anual" }));
+        item.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Daily", "Monthly", "Anual" }));
         item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemActionPerformed(evt);
