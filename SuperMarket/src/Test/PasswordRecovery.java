@@ -296,7 +296,7 @@ public class PasswordRecovery extends javax.swing.JFrame {
             while(rs.next()){
                 if (id==rs.getInt("ad_id")){
                     questionbox.setText(rs.getString("question"));
-                      
+                    
                 }else{
                    errormsg.setVisible(true);
                    errormsg.setText("Not Found");
