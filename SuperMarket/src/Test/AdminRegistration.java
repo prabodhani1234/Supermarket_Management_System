@@ -51,7 +51,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         item = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        answer = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,7 +114,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Answer");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        answer.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +146,7 @@ public class AdminRegistration extends javax.swing.JFrame {
                             .addComponent(emailbox, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(phonebox)
                             .addComponent(namebox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1))))
+                            .addComponent(answer))))
                 .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -178,7 +178,7 @@ public class AdminRegistration extends javax.swing.JFrame {
                     .addComponent(item, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(answer, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -237,6 +237,7 @@ public class AdminRegistration extends javax.swing.JFrame {
         passwordbox.setText("");
         emailbox.setText("");
         phonebox.setText("");
+        answer.setText("");
     }
     
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
@@ -249,10 +250,12 @@ public class AdminRegistration extends javax.swing.JFrame {
             String password=passwordbox.getText();
             String email=emailbox.getText();
             String phone=phonebox.getText();
+            String qua=(String) item.getSelectedItem();
+            String ans=answer.getText();
             
             
             
-            String query="INSERT INTO admin(ad_id,ad_username,ad_password,ad_email,phone) VALUES(?,?,?,?,?)";
+            String query="INSERT INTO admin(ad_id,ad_username,ad_password,ad_email,phone,question,answer) VALUES(?,?,?,?,?,?,?)";
             
             preparedstmt=con.prepareStatement(query);
             
@@ -262,6 +265,8 @@ public class AdminRegistration extends javax.swing.JFrame {
             preparedstmt.setString(3, password);
             preparedstmt.setString(4, email);
             preparedstmt.setString(5, phone);
+            preparedstmt.setString(6, qua);
+            preparedstmt.setString(7, ans);
             
             
             preparedstmt.execute();
@@ -316,6 +321,7 @@ public class AdminRegistration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField answer;
     private javax.swing.JButton create;
     private javax.swing.JTextField emailbox;
     private javax.swing.JButton exit;
@@ -331,7 +337,6 @@ public class AdminRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField namebox;
     private javax.swing.JTextField passwordbox;
     private javax.swing.JTextField phonebox;
